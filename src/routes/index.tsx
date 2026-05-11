@@ -1,231 +1,462 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Flame, Shield, Wrench, GraduationCap, PhoneCall, MapPin, Mail, CheckCircle2, Siren } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import {
+  Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin,
+  CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroImg from "@/assets/hero-firefighters.jpg";
-import extImg from "@/assets/extinguishers.jpg";
-import sprinklerImg from "@/assets/sprinkler.jpg";
-import trainingImg from "@/assets/training.jpg";
-import hydrantImg from "@/assets/hydrant.jpg";
+
+import heroImg from "@/assets/hero-fire-protection.jpg";
+import hydrantImg from "@/assets/product-hydrant.jpg";
+import extImg from "@/assets/product-extinguisher.jpg";
+import alarmImg from "@/assets/product-alarm.jpg";
+import pumpImg from "@/assets/product-pump.jpg";
+import sprinklerImg from "@/assets/product-sprinkler.jpg";
+
+import p1 from "@/assets/projects/project-1.jpeg";
+import p2 from "@/assets/projects/project-2.jpeg";
+import p3 from "@/assets/projects/project-3.jpeg";
+import p4 from "@/assets/projects/project-4.jpeg";
+import p5 from "@/assets/projects/project-5.jpeg";
+import p6 from "@/assets/projects/project-6.jpeg";
+import p7 from "@/assets/projects/project-7.jpeg";
+import p8 from "@/assets/projects/project-8.jpeg";
+import p9 from "@/assets/projects/project-9.jpeg";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: Home,
   head: () => ({
     meta: [
-      { title: "Fit Fire Service Indore | Fire Safety Equipment & AMC" },
-      {
-        name: "description",
-        content:
-          "Fit Fire Service in Indore — fire extinguishers, sprinkler & hydrant systems, refilling, AMC and fire safety training for homes, offices and industries.",
-      },
+      { title: "Vyraaz Firetech | Fire Protection Systems Indore" },
+      { name: "description", content: "Vyraaz Firetech Indore — fire hydrant, extinguisher, alarm, sprinkler and pump systems. Sales, installation, refilling and AMC." },
     ],
   }),
 });
 
-const services = [
-  { icon: Flame, title: "Fire Extinguishers", desc: "ABC, CO₂, Foam, Water & K-type extinguishers — sales, installation & refilling.", img: extImg },
-  { icon: Shield, title: "Hydrant & Hose Systems", desc: "Design, supply and installation of wet/dry riser fire hydrant systems.", img: hydrantImg },
-  { icon: Wrench, title: "Sprinkler & Alarm Systems", desc: "Automatic sprinklers, smoke detectors and addressable fire alarm panels.", img: sprinklerImg },
-  { icon: GraduationCap, title: "Fire Safety Training", desc: "On-site mock drills and staff training as per Indian fire safety norms.", img: trainingImg },
+const features = [
+  { icon: Droplets, label: "Fire Hydrant" },
+  { icon: Shield, label: "Fire Safety" },
+  { icon: Bell, label: "Fire Alarm" },
+  { icon: Siren, label: "Fire Station" },
+  { icon: ArrowRight, label: "Fire Exit" },
+  { icon: Flame, label: "Fire Bell" },
 ];
 
-function Index() {
+const products = [
+  { img: hydrantImg, title: "Fire Hydrant", desc: "A complete range of fire fighting equipment — hydrants, hoses, nozzles & landing valves — engineered to combat fires effectively and efficiently." },
+  { img: extImg, title: "Fire Extinguisher", desc: "ABC, BC, CO₂, foam, water and K-type extinguishers suitable for every fire class, with sales, installation and on-time refilling." },
+  { img: alarmImg, title: "Fire Alarm", desc: "Conventional and addressable fire alarm systems with smoke detectors, MCPs and panels — early detection, faster response." },
+  { img: pumpImg, title: "Fire Fighting Pumps", desc: "Electric, diesel and jockey pump sets with pressure boosters for hydrant and sprinkler networks of every scale." },
+  { img: sprinklerImg, title: "Sprinkler Systems", desc: "Automatic wet & dry sprinkler systems designed and installed as per IS / NFPA standards for total area coverage." },
+];
+
+const projects = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
+};
+
+function Home() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground overflow-hidden">
       {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border">
+      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <a href="#top" className="flex items-center gap-2 font-bold text-lg">
-            <span className="w-9 h-9 rounded-md grid place-items-center text-white" style={{ background: "var(--gradient-fire)" }}>
-              <Flame className="w-5 h-5" />
-            </span>
-            <span>Fit Fire Service</span>
+          <a href="#top" className="flex items-center gap-3 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-fire blur-md opacity-60 group-hover:opacity-100 transition" />
+              <div className="relative w-10 h-10 rounded-lg bg-fire grid place-items-center text-white">
+                <Flame className="w-5 h-5" />
+              </div>
+            </div>
+            <div>
+              <div className="font-display text-xl tracking-wider leading-none">VYRAAZ</div>
+              <div className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase">Firetech</div>
+            </div>
           </a>
           <nav className="hidden md:flex gap-8 text-sm font-medium">
-            <a href="#services" className="hover:text-[color:var(--brand)]">Services</a>
-            <a href="#about" className="hover:text-[color:var(--brand)]">About</a>
-            <a href="#why" className="hover:text-[color:var(--brand)]">Why Us</a>
-            <a href="#contact" className="hover:text-[color:var(--brand)]">Contact</a>
+            {["Home", "About", "Products", "Projects", "Contact"].map((l) => (
+              <a key={l} href={`#${l.toLowerCase()}`} className="relative group text-foreground/80 hover:text-foreground transition">
+                {l}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-fire group-hover:w-full transition-all" />
+              </a>
+            ))}
           </nav>
-          <a href="tel:+919999999999">
-            <Button className="text-white" style={{ background: "var(--gradient-fire)" }}>
-              <PhoneCall className="w-4 h-4 mr-2" /> Call Now
+          <a href="tel:+918103498409">
+            <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
+              <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
             </Button>
           </a>
         </div>
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden">
-        <img src={heroImg} alt="Fit Fire Service team Indore" width={1920} height={1080} className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/30" />
-        <div className="relative max-w-7xl mx-auto px-6 py-32 md:py-44 text-white">
-          <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[color:var(--accent-yellow)] mb-6">
-            <Siren className="w-4 h-4" /> Indore's Trusted Fire Safety Partner
-          </span>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] max-w-4xl">
-            Protecting Lives & Property with <span style={{ background: "var(--gradient-fire)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Reliable Fire Safety</span>
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg text-white/85">
-            Fit Fire Service supplies, installs and maintains complete fire-fighting equipment for homes, offices, factories and institutions across Indore and Madhya Pradesh.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <a href="#contact">
-              <Button size="lg" className="text-white h-12 px-7 text-base" style={{ background: "var(--gradient-fire)", boxShadow: "var(--shadow-fire)" }}>
-                Get Free Site Survey
-              </Button>
-            </a>
-            <a href="#services">
-              <Button size="lg" variant="outline" className="h-12 px-7 text-base bg-transparent text-white border-white/40 hover:bg-white hover:text-foreground">
-                Explore Services
-              </Button>
-            </a>
-          </div>
-          <div className="mt-14 grid grid-cols-3 gap-6 max-w-xl">
-            {[["10+", "Years"], ["1500+", "Clients"], ["24/7", "Support"]].map(([n, l]) => (
-              <div key={l}>
-                <div className="text-3xl md:text-4xl font-bold text-[color:var(--accent-yellow)]">{n}</div>
-                <div className="text-xs uppercase tracking-wider text-white/70 mt-1">{l}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center pt-20">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
+          <img src={heroImg} alt="Industrial fire protection pump room" width={1920} height={1088} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+        </motion.div>
+        <div className="absolute inset-0 grid-bg opacity-30" />
 
-      {/* ABOUT */}
-      <section id="about" className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-14 items-center">
-        <div>
-          <span className="text-xs font-semibold tracking-widest uppercase text-[color:var(--brand)]">About Us</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3 leading-tight">
-            Indore's dedicated team for end-to-end fire safety solutions.
-          </h2>
-          <p className="mt-6 text-muted-foreground leading-relaxed">
-            Based in Indore, Fit Fire Service is a trusted name in fire protection. From a single extinguisher refill to designing complete hydrant and sprinkler networks for industrial plants, we deliver certified equipment, professional installation and reliable annual maintenance contracts (AMC).
-          </p>
-          <ul className="mt-6 space-y-3">
-            {[
-              "ISI-marked & MSME certified equipment",
-              "Licensed technicians and timely AMC visits",
-              "Compliance with Indian fire safety standards",
-              "Fast emergency refilling & service across Indore",
-            ].map((t) => (
-              <li key={t} className="flex gap-3 text-sm">
-                <CheckCircle2 className="w-5 h-5 text-[color:var(--brand)] shrink-0 mt-0.5" />
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="relative">
-          <img src={trainingImg} alt="Fire safety training in Indore" loading="lazy" width={1280} height={960} className="rounded-2xl shadow-2xl" />
-          <div className="absolute -bottom-6 -left-6 bg-[color:var(--brand)] text-white p-6 rounded-2xl max-w-[220px] shadow-xl">
-            <div className="text-3xl font-black">100%</div>
-            <div className="text-sm mt-1">Compliance & Safety Guaranteed</div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="bg-secondary/40 py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-semibold tracking-widest uppercase text-[color:var(--brand)]">Our Services</span>
-            <h2 className="text-3xl md:text-5xl font-bold mt-3">Complete Fire Safety, Under One Roof</h2>
-            <p className="mt-4 text-muted-foreground">From supply to installation, refilling and training — everything you need to keep your premises fire-safe.</p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
-            {services.map((s) => (
-              <div key={s.title} className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-2xl transition-all hover:-translate-y-1">
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img src={s.img} alt={s.title} loading="lazy" width={1280} height={960} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.12 } } }} className="max-w-3xl">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-ember text-xs uppercase tracking-[0.2em] mb-8">
+              <Sparkles className="w-3.5 h-3.5" /> Indore's Trusted Fire Safety Partner
+            </motion.div>
+            <motion.h1 variants={fadeUp} className="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] uppercase">
+              Safeguarding<br/>
+              <span className="text-fire">Tomorrow,</span><br/>
+              Today.
+            </motion.h1>
+            <motion.p variants={fadeUp} className="mt-8 text-lg md:text-xl text-foreground/75 max-w-2xl leading-relaxed">
+              At <span className="text-foreground font-semibold">Vyraaz Firetech</span>, safety is our top priority. We are an established seller, distributor and installer of premium fire fighting equipment and a complete range of safety products across Indore and Madhya Pradesh.
+            </motion.p>
+            <motion.div variants={fadeUp} className="mt-12 flex flex-wrap gap-4">
+              <a href="#products">
+                <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
+                  Explore Products
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
+                </Button>
+              </a>
+              <a href="#contact">
+                <Button size="lg" variant="outline" className="h-14 px-8 text-base border-border bg-background/40 backdrop-blur hover:bg-card">
+                  Request a Quote
+                </Button>
+              </a>
+            </motion.div>
+            <motion.div variants={fadeUp} className="mt-20 grid grid-cols-3 max-w-xl gap-8">
+              {[["10+", "Years"], ["1500+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
+                <div key={l}>
+                  <div className="font-display text-4xl md:text-5xl text-fire">{n}</div>
+                  <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">{l}</div>
                 </div>
-                <div className="p-6">
-                  <div className="w-11 h-11 rounded-lg grid place-items-center text-white mb-4" style={{ background: "var(--gradient-fire)" }}>
-                    <s.icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="font-bold text-lg">{s.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-2">{s.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Floating side keywords */}
+        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 pr-8 opacity-20 font-display text-7xl uppercase leading-none">
+          <div>Hydrant</div>
+          <div className="text-fire opacity-100">Pumps</div>
+          <div>Alarm</div>
         </div>
       </section>
 
-      {/* WHY */}
-      <section id="why" className="max-w-7xl mx-auto px-6 py-24">
-        <div className="text-center max-w-2xl mx-auto">
-          <span className="text-xs font-semibold tracking-widest uppercase text-[color:var(--brand)]">Why Choose Us</span>
-          <h2 className="text-3xl md:text-5xl font-bold mt-3">Safety You Can Count On</h2>
-        </div>
-        <div className="grid md:grid-cols-3 gap-8 mt-14">
-          {[
-            { icon: Shield, t: "Certified Equipment", d: "All products are ISI-marked and tested to Indian safety standards." },
-            { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure correct placement and code compliance." },
-            { icon: PhoneCall, t: "24/7 Emergency Support", d: "Quick response across Indore for refills, repairs and emergencies." },
-          ].map((f) => (
-            <div key={f.t} className="p-8 rounded-2xl border border-border bg-card hover:border-[color:var(--brand)] transition">
-              <div className="w-12 h-12 rounded-xl grid place-items-center text-white mb-5" style={{ background: "var(--gradient-fire)" }}>
-                <f.icon className="w-6 h-6" />
-              </div>
-              <h3 className="font-bold text-xl">{f.t}</h3>
-              <p className="text-muted-foreground mt-2 text-sm leading-relaxed">{f.d}</p>
+      {/* MARQUEE */}
+      <div className="relative py-6 border-y border-border bg-card/40 overflow-hidden">
+        <div className="flex marquee-track gap-16 whitespace-nowrap font-display text-3xl md:text-5xl uppercase">
+          {Array.from({ length: 2 }).map((_, i) => (
+            <div key={i} className="flex gap-16 items-center">
+              {["Fire Alarm System", "•", "Fire Fighting Pumps", "•", "Fire Hydrant System", "•", "Fire Extinguishers", "•", "Sprinkler Systems", "•"].map((t, j) => (
+                <span key={j} className={t === "•" ? "text-brand" : "text-foreground/40 hover:text-foreground transition"}>{t}</span>
+              ))}
             </div>
           ))}
         </div>
+      </div>
+
+      {/* ABOUT */}
+      <section id="about" className="relative py-32">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={fadeUp} className="relative">
+            <div className="absolute -inset-4 bg-fire opacity-20 blur-3xl rounded-full" />
+            <img src={pumpImg} alt="Fire fighting pump" loading="lazy" width={1024} height={1024} className="relative rounded-2xl border border-border shadow-2xl" />
+            <div className="absolute -bottom-8 -right-4 md:-right-12 bg-fire text-white p-6 rounded-2xl shadow-fire max-w-[220px]">
+              <div className="font-display text-5xl">10+</div>
+              <div className="text-xs uppercase tracking-[0.2em] mt-1 opacity-90">Years of experience in this field</div>
+            </div>
+          </motion.div>
+
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={{ show: { transition: { staggerChildren: 0.1 } } }}>
+            <motion.div variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-ember mb-4">Welcome to</motion.div>
+            <motion.h2 variants={fadeUp} className="font-display text-5xl md:text-6xl uppercase leading-[1] mb-6">
+              Vyraaz <span className="text-fire">Firetech</span><br/>System
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-foreground/75 leading-relaxed mb-8">
+              Vyraaz Firetech — Your Trusted Partner in Safety. We are a well-established seller, distributor, supplier and trader of high-quality fire fighting equipment and a wide range of safety products. With years of experience in the industry, we have earned the trust of countless customers by providing top-notch products and services that ensure the safety and security of people and property.
+            </motion.p>
+            <motion.ul variants={fadeUp} className="space-y-4">
+              {[
+                ["Quality Assurance", "We supply only the highest quality products that meet or exceed industry standards, including ISI marking for fire hydrant accessories."],
+                ["Expertise", "Years of experience giving us deep knowledge of fire safety and security products, enabling expert advice and solutions."],
+                ["Customer-Centric Approach", "We prioritize our customers' needs and satisfaction with personalized solutions and excellent support."],
+                ["Reliability", "Our products are known for reliability and durability, performing effectively when you need them most."],
+                ["Competitive Pricing", "Competitive pricing without compromising on product quality — making safety affordable for all."],
+              ].map(([t, d]) => (
+                <li key={t} className="flex gap-4 group">
+                  <CheckCircle2 className="w-6 h-6 text-brand shrink-0 mt-0.5 group-hover:scale-110 transition" />
+                  <div>
+                    <div className="font-semibold text-foreground">{t}</div>
+                    <div className="text-sm text-muted-foreground mt-0.5">{d}</div>
+                  </div>
+                </li>
+              ))}
+            </motion.ul>
+          </motion.div>
+        </div>
       </section>
 
-      {/* CTA / CONTACT */}
-      <section id="contact" className="relative py-24 text-white overflow-hidden" style={{ background: "var(--brand-dark)" }}>
-        <div className="absolute inset-0 opacity-20" style={{ background: "var(--gradient-fire)" }} />
-        <div className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-black leading-tight">Need a fire safety audit for your premises?</h2>
-            <p className="mt-5 text-white/80 text-lg">Talk to our experts today. We provide free site surveys and customized quotations across Indore.</p>
-            <div className="mt-10 space-y-5">
-              <div className="flex items-start gap-4">
-                <PhoneCall className="w-5 h-5 mt-1 text-[color:var(--accent-yellow)]" />
-                <div>
-                  <div className="text-sm text-white/60">Call us</div>
-                  <a href="tel:+919999999999" className="font-semibold text-lg">+91 99999 99999</a>
+      {/* FEATURES */}
+      <section className="relative py-24 bg-card/30 border-y border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Some Features & Benefits</div>
+            <h2 className="font-display text-4xl md:text-6xl uppercase">What We <span className="text-fire">Cover</span></h2>
+          </motion.div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {features.map((f, i) => (
+              <motion.div
+                key={f.label}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group relative aspect-square rounded-2xl border border-border bg-background/60 backdrop-blur p-6 flex flex-col items-center justify-center text-center hover:border-brand hover:shadow-glow transition-all"
+              >
+                <div className="absolute inset-0 bg-fire opacity-0 group-hover:opacity-10 rounded-2xl transition" />
+                <div className="relative w-14 h-14 rounded-xl bg-fire grid place-items-center text-white mb-4 group-hover:scale-110 transition">
+                  <f.icon className="w-7 h-7" />
                 </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <Mail className="w-5 h-5 mt-1 text-[color:var(--accent-yellow)]" />
-                <div>
-                  <div className="text-sm text-white/60">Email</div>
-                  <a href="mailto:info@fitfireservice.in" className="font-semibold text-lg">info@fitfireservice.in</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <MapPin className="w-5 h-5 mt-1 text-[color:var(--accent-yellow)]" />
-                <div>
-                  <div className="text-sm text-white/60">Address</div>
-                  <div className="font-semibold text-lg">Indore, Madhya Pradesh, India</div>
-                </div>
-              </div>
-            </div>
+                <div className="relative font-display text-lg uppercase tracking-wider">{f.label}</div>
+              </motion.div>
+            ))}
           </div>
-          <form className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 space-y-4" onSubmit={(e) => e.preventDefault()}>
-            <h3 className="text-2xl font-bold">Request a Quote</h3>
-            <input className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/50 focus:outline-none focus:border-[color:var(--accent-yellow)]" placeholder="Your Name" />
-            <input className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/50 focus:outline-none focus:border-[color:var(--accent-yellow)]" placeholder="Phone Number" />
-            <input className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/50 focus:outline-none focus:border-[color:var(--accent-yellow)]" placeholder="Email Address" />
-            <textarea rows={4} className="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/50 focus:outline-none focus:border-[color:var(--accent-yellow)]" placeholder="Tell us about your requirement" />
-            <Button type="submit" className="w-full h-12 text-base text-white" style={{ background: "var(--gradient-fire)" }}>
+        </div>
+      </section>
+
+      {/* PRODUCTS */}
+      <section id="products" className="relative py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-2xl mb-16">
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Illuminating Protection</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95]">
+              Our <span className="text-fire">Products</span>
+            </h2>
+            <p className="mt-6 text-foreground/70 text-lg">
+              Your beacon of safety in fire prevention and control — a curated range of certified equipment, engineered for performance.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {products.map((p, i) => (
+              <motion.article
+                key={p.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
+                className="group relative rounded-2xl overflow-hidden border border-border bg-card hover:border-brand transition-all"
+              >
+                <div className="aspect-[4/3] overflow-hidden bg-background">
+                  <img src={p.img} alt={p.title} loading="lazy" width={1024} height={768} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
+                </div>
+                <div className="p-7">
+                  <div className="flex items-center justify-between mb-3">
+                    <h3 className="font-display text-2xl uppercase tracking-wide">{p.title}</h3>
+                    <div className="w-10 h-10 rounded-full border border-border grid place-items-center group-hover:bg-fire group-hover:border-transparent transition">
+                      <ArrowRight className="w-4 h-4 group-hover:text-white transition" />
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="relative py-32 bg-card/30 border-y border-border">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="flex flex-wrap items-end justify-between gap-6 mb-16">
+            <div>
+              <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Site Installations</div>
+              <h2 className="font-display text-5xl md:text-7xl uppercase">Our <span className="text-fire">Projects</span></h2>
+            </div>
+            <p className="text-muted-foreground max-w-md">
+              A glimpse of fire safety installations our team has executed across Indore and Madhya Pradesh.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+            {projects.map((src, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+                className={`relative group overflow-hidden rounded-xl border border-border ${i === 0 || i === 4 ? "md:row-span-2 aspect-[3/4]" : "aspect-square"}`}
+              >
+                <img src={src} alt={`Vyraaz Firetech project ${i + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition" />
+                <div className="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition">
+                  <div className="text-[10px] uppercase tracking-[0.3em] text-ember">Project / 0{i + 1}</div>
+                  <div className="font-display text-xl uppercase">Site Installation</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Counters */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24">
+            {[
+              { n: "1500+", l: "Total Projects", icon: Briefcase },
+              { n: "1200+", l: "Happy Customers", icon: Users },
+              { n: "25+", l: "Our Team", icon: Award },
+              { n: "10+", l: "Years Experience", icon: Clock },
+            ].map((s, i) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="p-8 rounded-2xl border border-border bg-background/60 backdrop-blur text-center"
+              >
+                <s.icon className="w-7 h-7 text-brand mx-auto mb-4" />
+                <div className="font-display text-5xl text-fire">{s.n}</div>
+                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2">{s.l}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE */}
+      <section className="relative py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-2xl mx-auto mb-16">
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase">Safety You Can <span className="text-fire">Count On</span></h2>
+          </motion.div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { icon: Shield, t: "Certified Equipment", d: "All products are ISI-marked and tested to Indian fire safety standards." },
+              { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure correct placement, hydraulic design and code compliance." },
+              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Quick response across Indore for refills, repairs and emergency service calls." },
+            ].map((f, i) => (
+              <motion.div
+                key={f.t}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.12 }}
+                className="group relative p-10 rounded-3xl border border-border bg-card/50 backdrop-blur hover:border-brand transition-all overflow-hidden"
+              >
+                <div className="absolute -top-20 -right-20 w-48 h-48 bg-fire opacity-0 group-hover:opacity-20 blur-3xl rounded-full transition" />
+                <div className="relative">
+                  <div className="w-14 h-14 rounded-2xl bg-fire grid place-items-center text-white mb-6 shadow-fire">
+                    <f.icon className="w-7 h-7" />
+                  </div>
+                  <h3 className="font-display text-2xl uppercase mb-3">{f.t}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{f.d}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-brand-dark/30 to-background" />
+        <div className="absolute inset-0 grid-bg opacity-30" />
+        <div className="relative max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Get in Touch</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.95] mb-6">
+              Need a fire safety <span className="text-fire">audit?</span>
+            </h2>
+            <p className="text-foreground/75 text-lg mb-12">
+              Talk to our experts today. We provide free site surveys and customized quotations across Indore and Madhya Pradesh.
+            </p>
+            <div className="space-y-6">
+              {[
+                { icon: PhoneCall, label: "Call Us", value: "+91 8103 498 409", href: "tel:+918103498409" },
+                { icon: Mail, label: "Email Us", value: "vyraazfiretech@gmail.com", href: "mailto:vyraazfiretech@gmail.com" },
+                { icon: MapPin, label: "Visit Us", value: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa, Indore, MP 452001" },
+              ].map((c) => (
+                <a key={c.label} href={c.href} className="flex items-start gap-5 group">
+                  <div className="relative">
+                    <div className="w-12 h-12 rounded-xl bg-fire grid place-items-center text-white shrink-0 pulse-ring">
+                      <c.icon className="w-5 h-5" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{c.label}</div>
+                    <div className="font-medium text-lg group-hover:text-ember transition">{c.value}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.form
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            onSubmit={(e) => e.preventDefault()}
+            className="bg-card/70 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-10 space-y-5 shadow-2xl"
+          >
+            <h3 className="font-display text-3xl uppercase mb-2">Request a Quote</h3>
+            <p className="text-sm text-muted-foreground mb-6">Fill the form and our team will reach out within 24 hours.</p>
+            {[
+              { ph: "Your Name", type: "text" },
+              { ph: "Phone Number", type: "tel" },
+              { ph: "Email Address", type: "email" },
+            ].map((f) => (
+              <input
+                key={f.ph}
+                type={f.type}
+                placeholder={f.ph}
+                className="w-full bg-background/60 border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition"
+              />
+            ))}
+            <textarea
+              rows={4}
+              placeholder="Tell us about your requirement"
+              className="w-full bg-background/60 border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition resize-none"
+            />
+            <Button type="submit" className="w-full h-14 text-base bg-fire text-white shadow-fire hover:opacity-90 group">
               Send Enquiry
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
             </Button>
-          </form>
+          </motion.form>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-foreground text-background/80 py-10">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between gap-4 items-center text-sm">
-          <div className="flex items-center gap-2 font-bold text-background">
-            <Flame className="w-4 h-4 text-[color:var(--brand)]" />
-            Fit Fire Service · Indore
+      <footer className="relative border-t border-border py-12 bg-card/40">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-lg bg-fire grid place-items-center text-white">
+              <Flame className="w-5 h-5" />
+            </div>
+            <div>
+              <div className="font-display text-lg tracking-wider">VYRAAZ FIRETECH</div>
+              <div className="text-xs text-muted-foreground">Indore · Madhya Pradesh</div>
+            </div>
           </div>
-          <div>© {new Date().getFullYear()} Fit Fire Service. All rights reserved.</div>
+          <div className="text-center text-sm text-muted-foreground">
+            © {new Date().getFullYear()} Vyraaz Firetech. All rights reserved.
+          </div>
+          <div className="flex md:justify-end gap-4 text-sm text-muted-foreground">
+            <a href="#about" className="hover:text-foreground transition">About</a>
+            <a href="#products" className="hover:text-foreground transition">Products</a>
+            <a href="#contact" className="hover:text-foreground transition">Contact</a>
+          </div>
         </div>
       </footer>
     </div>
