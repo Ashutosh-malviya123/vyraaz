@@ -236,29 +236,40 @@ function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="relative py-24 bg-card/30 border-y border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Some Features & Benefits</div>
-            <h2 className="font-display text-4xl md:text-6xl uppercase">What We <span className="text-fire">Cover</span></h2>
+      <section className="relative py-20 md:py-28 bg-gradient-to-b from-card/40 via-background to-card/40 border-y border-border overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-fire opacity-20 blur-3xl" />
+        <div aria-hidden className="pointer-events-none absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-fire opacity-15 blur-3xl" />
+        <div className="relative max-w-6xl mx-auto px-5">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10 md:mb-14">
+            <div className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-ember mb-3">Some Features & Benefits</div>
+            <h2 className="font-display text-3xl md:text-5xl uppercase">What We <span className="text-fire">Cover</span></h2>
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {features.map((f, i) => (
-              <motion.div
-                key={f.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative aspect-square rounded-2xl border border-border bg-background/60 backdrop-blur p-6 flex flex-col items-center justify-center text-center hover:border-brand hover:shadow-glow transition-all"
-              >
-                <div className="absolute inset-0 bg-fire opacity-0 group-hover:opacity-10 rounded-2xl transition" />
-                <div className="relative w-14 h-14 rounded-xl bg-fire grid place-items-center text-white mb-4 group-hover:scale-110 transition">
-                  <f.icon className="w-7 h-7" />
-                </div>
-                <div className="relative font-display text-lg uppercase tracking-wider">{f.label}</div>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5">
+            {features.map((f, i) => {
+              const highlight = f.label === "Fire Alarm";
+              return (
+                <motion.div
+                  key={f.label}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.5, delay: i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                  whileHover={{ y: -6 }}
+                  className={`group relative aspect-square rounded-3xl p-4 md:p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 ${
+                    highlight
+                      ? "bg-[color-mix(in_oklab,var(--brand)_8%,var(--background))] border border-[color-mix(in_oklab,var(--brand)_35%,transparent)] shadow-fire ring-1 ring-[color-mix(in_oklab,var(--brand)_20%,transparent)]"
+                      : "bg-background border border-border hover:border-[color-mix(in_oklab,var(--brand)_30%,transparent)] hover:shadow-glow"
+                  }`}
+                >
+                  <div className={`relative w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 rounded-2xl bg-fire grid place-items-center text-white shadow-lg shadow-[color-mix(in_oklab,var(--brand)_25%,transparent)] transition-transform duration-300 ${highlight ? "scale-105" : "group-hover:scale-110 group-hover:-rotate-3"}`}>
+                    <f.icon className="w-6 h-6 md:w-8 md:h-8" />
+                  </div>
+                  <div className={`relative font-display text-[11px] md:text-sm uppercase tracking-[0.18em] ${highlight ? "text-brand" : "text-foreground/85 group-hover:text-brand"} transition-colors`}>
+                    {f.label}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
