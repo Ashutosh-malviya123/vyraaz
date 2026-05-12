@@ -258,9 +258,8 @@ function Home() {
                 transition={{ duration: 0.6, delay: (i % 3) * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden border border-border bg-card hover:border-brand transition-all"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-background">
+                <div className="relative aspect-[4/3] overflow-hidden bg-background">
                   <img src={p.img} alt={p.title} loading="lazy" width={1024} height={768} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
                 </div>
                 <div className="p-7">
                   <div className="flex items-center justify-between mb-3">
