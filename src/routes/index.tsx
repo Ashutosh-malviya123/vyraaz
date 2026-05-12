@@ -236,27 +236,49 @@ function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="relative py-24 bg-card/30 border-y border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Some Features & Benefits</div>
-            <h2 className="font-display text-4xl md:text-6xl uppercase">What We <span className="text-fire">Cover</span></h2>
+      <section className="relative py-24 bg-linear-to-b from-background via-card/40 to-background border-y border-border overflow-hidden">
+        {/* Decorative blurs */}
+        <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-fire opacity-20 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-ember opacity-20 blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center mb-12 md:mb-16">
+            <div className="text-[10px] md:text-xs uppercase tracking-[0.3em] text-ember mb-3">Some Features & Benefits</div>
+            <h2 className="font-display text-3xl md:text-6xl uppercase">What We <span className="text-fire">Cover</span></h2>
+            <div className="mx-auto mt-4 h-1 w-16 rounded-full bg-fire" />
           </motion.div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-5">
             {features.map((f, i) => (
               <motion.div
                 key={f.label}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group relative aspect-square rounded-2xl border border-border bg-background/60 backdrop-blur p-6 flex flex-col items-center justify-center text-center hover:border-brand hover:shadow-glow transition-all"
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
+                className={`group relative aspect-square rounded-2xl p-4 md:p-6 flex flex-col items-center justify-center text-center overflow-hidden transition-all duration-500 ${
+                  i % 2 === 0
+                    ? "bg-fire text-white shadow-fire md:translate-y-3"
+                    : "bg-background/70 backdrop-blur border border-border hover:border-brand hover:shadow-glow"
+                }`}
               >
-                <div className="absolute inset-0 bg-fire opacity-0 group-hover:opacity-10 rounded-2xl transition" />
-                <div className="relative w-14 h-14 rounded-xl bg-fire grid place-items-center text-white mb-4 group-hover:scale-110 transition">
-                  <f.icon className="w-7 h-7" />
+                {/* Shine sweep */}
+                <div className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-linear-to-r from-transparent via-white/20 to-transparent" />
+                {/* Glow blob */}
+                <div className={`pointer-events-none absolute -inset-6 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${i % 2 === 0 ? "bg-white/20" : "bg-fire opacity-0 group-hover:opacity-30"}`} />
+
+                <div
+                  className={`relative w-10 h-10 md:w-14 md:h-14 rounded-xl grid place-items-center mb-2 md:mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 ${
+                    i % 2 === 0
+                      ? "bg-white/15 ring-1 ring-white/30 text-white"
+                      : "bg-fire text-white shadow-fire"
+                  }`}
+                >
+                  <f.icon className="w-5 h-5 md:w-7 md:h-7" />
                 </div>
-                <div className="relative font-display text-lg uppercase tracking-wider">{f.label}</div>
+                <div className="relative font-display text-xs md:text-lg uppercase tracking-wider">{f.label}</div>
+                <div className={`relative mt-1 md:mt-2 h-0.5 w-0 group-hover:w-8 transition-all duration-500 ${i % 2 === 0 ? "bg-white" : "bg-fire"}`} />
               </motion.div>
             ))}
           </div>
