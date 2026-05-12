@@ -183,9 +183,7 @@ function FireExtinguisherPage() {
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Button size="lg" className="bg-fire hover:bg-fire/90 text-white">Request a Quote</Button>
-              <Button size="lg" variant="outline" className="gap-2">
-                <Download className="w-4 h-4" /> Download Brochure
-              </Button>
+              <Link to="/"><Button size="lg" variant="outline">Back to Home</Button></Link>
             </div>
           </motion.div>
         </div>
