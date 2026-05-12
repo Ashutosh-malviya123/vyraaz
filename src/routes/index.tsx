@@ -325,6 +325,9 @@ function Home() {
                   {p.title === "Fire Extinguisher" && (
                     <Link to="/products/fire-extinguisher" className="absolute inset-0" aria-label="View Fire Extinguisher products" />
                   )}
+                  {p.title === "Fire Alarm" && (
+                    <Link to="/products/fire-alarm" className="absolute inset-0" aria-label="View Fire Alarm products" />
+                  )}
                 </div>
               </motion.article>
             ))}
