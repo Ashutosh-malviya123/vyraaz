@@ -11,7 +11,7 @@ import heroImg from "@/assets/hero-fire-protection.jpg";
 import hydrantImg from "@/assets/product-hydrant.jpg";
 import extImg from "@/assets/product-extinguisher.jpg";
 import alarmImg from "@/assets/product-alarm.jpg";
-import sprinklerImg from "@/assets/product-sprinkler.jpg";
+import pumpImg from "@/assets/product-pump.jpg";
 
 import p1 from "@/assets/projects/project-1.jpeg";
 import p2 from "@/assets/projects/project-2.jpeg";
