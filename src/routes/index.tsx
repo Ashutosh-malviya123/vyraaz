@@ -371,9 +371,9 @@ function Home() {
           </motion.div>
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {[
-              { icon: Shield, t: "Certified Equipment", d: "All products are ISI-marked and tested to Indian fire safety standards." },
-              { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure correct placement, hydraulic design and code compliance." },
-              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Quick response across Indore for refills, repairs and emergency service calls." },
+              { icon: Shield, t: "Certified Equipment", d: "ISI-marked, tested to Indian fire safety standards." },
+              { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure code-compliant setup." },
+              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Fast response across Indore, anytime." },
             ].map((f, i) => (
               <motion.div
                 key={f.t}
