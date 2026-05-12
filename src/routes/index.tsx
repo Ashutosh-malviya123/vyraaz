@@ -338,24 +338,64 @@ function Home() {
           </div>
 
           {/* Counters */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-24">
             {[
-              { n: "100+", l: "Total Projects", icon: Briefcase },
-              { n: "1200+", l: "Happy Customers", icon: Users },
-              { n: "50+", l: "Our Team", icon: Award },
-              { n: "10+", l: "Years Experience", icon: Clock },
+              { n: "100+", l: "Total Projects", icon: Briefcase, filled: false },
+              { n: "1200+", l: "Happy Customers", icon: Users, filled: true },
+              { n: "50+", l: "Our Team", icon: Award, filled: true },
+              { n: "10+", l: "Years Experience", icon: Clock, filled: false },
             ].map((s, i) => (
               <motion.div
                 key={s.l}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="p-8 rounded-2xl border border-border bg-background/60 backdrop-blur text-center"
+                transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+                whileHover={{ y: -6 }}
+                className={`group relative overflow-hidden p-6 md:p-8 rounded-2xl border transition-all duration-500 ${
+                  s.filled
+                    ? "bg-fire border-transparent text-white shadow-fire md:translate-y-6 hover:shadow-glow"
+                    : "bg-background/60 border-border backdrop-blur hover:border-brand hover:shadow-fire"
+                }`}
               >
-                <s.icon className="w-7 h-7 text-brand mx-auto mb-4" />
-                <div className="font-display text-5xl text-fire">{s.n}</div>
-                <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2">{s.l}</div>
+                {/* glow blob */}
+                <div
+                  className={`absolute -top-16 -right-16 w-40 h-40 rounded-full blur-3xl transition-opacity duration-500 ${
+                    s.filled
+                      ? "bg-white/20 opacity-40 group-hover:opacity-70"
+                      : "bg-fire opacity-0 group-hover:opacity-25"
+                  }`}
+                />
+                <div className="relative flex flex-col items-center text-center">
+                  <div
+                    className={`w-12 h-12 md:w-14 md:h-14 rounded-xl grid place-items-center mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-6 ${
+                      s.filled
+                        ? "bg-white/15 text-white ring-1 ring-white/30"
+                        : "bg-fire text-white shadow-fire"
+                    }`}
+                  >
+                    <s.icon className="w-6 h-6" />
+                  </div>
+                  <div
+                    className={`font-display text-4xl md:text-6xl leading-none ${
+                      s.filled ? "text-white" : "text-fire"
+                    }`}
+                  >
+                    {s.n}
+                  </div>
+                  <div
+                    className={`text-[10px] md:text-xs uppercase tracking-[0.25em] mt-3 ${
+                      s.filled ? "text-white/80" : "text-muted-foreground"
+                    }`}
+                  >
+                    {s.l}
+                  </div>
+                  <div
+                    className={`mt-4 h-0.5 w-8 transition-all duration-500 group-hover:w-16 ${
+                      s.filled ? "bg-white/70" : "bg-fire"
+                    }`}
+                  />
+                </div>
               </motion.div>
             ))}
           </div>
