@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, Download, Flame, Menu, X, PhoneCall } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Flame, Menu, X, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -27,15 +27,12 @@ export const Route = createFileRoute("/products/fire-extinguisher")({
   }),
 });
 
-type Spec = { label: string; values: string[] };
 type Product = {
   id: string;
   img: string;
   title: string;
   bestUse?: string;
   intro: string;
-  models?: string[];
-  specs?: Spec[];
 };
 
 const products: Product[] = [
@@ -45,69 +42,24 @@ const products: Product[] = [
     title: "ABC Powder Type",
     bestUse: "Home, Office, Buildings, Warehouses, Farms, Wood-working areas",
     intro: "Stored-pressure ABC dry powder extinguisher charged with mono-ammonium phosphate (MAP) base powder. Effective on Class A, B and C fires — solids, flammable liquids and gases.",
-    models: ["MOD1", "MOD2", "MOD4", "MOD6", "MOD9"],
-    specs: [
-      { label: "Capacity (Kgs)", values: ["1", "2", "4", "6", "9"] },
-      { label: "Type", values: ["Stored Pressure", "Stored Pressure", "Stored Pressure", "Stored Pressure", "Stored Pressure"] },
-      { label: "Extinguishing Agent", values: ["MAP Base Powder", "MAP Base Powder", "MAP Base Powder", "MAP Base Powder", "MAP Base Powder"] },
-      { label: "Fire Rating (IS:15683:2018)", values: ["1A, 21B", "2A, 55B", "3A, 89B", "4A, 144B", "6A, 233B"] },
-      { label: "Discharge Time (s)", values: [">8", ">12", ">15", ">18", ">23"] },
-      { label: "OD (mm)", values: ["86", "108", "140", "160", "180"] },
-      { label: "Filled Weight (Kg)", values: ["2.2", "3.5", "6.8", "9.5", "13"] },
-      { label: "Design Standard", values: ["CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683"] },
-    ],
   },
   {
     id: "bc-powder",
     img: bcImg,
     title: "BC Powder Type",
     intro: "Sodium-bicarbonate based BC dry powder extinguisher — both stored-pressure and cartridge-operated variants. Designed for flammable liquid and gas fires in industrial and kitchen environments.",
-    models: ["MOD 4-S", "MOD 6-S", "MOD 9-S", "MODCT6", "MODCT9"],
-    specs: [
-      { label: "Capacity (Kgs)", values: ["4", "6", "9", "6", "9"] },
-      { label: "Type", values: ["Stored Pressure", "Stored Pressure", "Stored Pressure", "Cartridge", "Cartridge"] },
-      { label: "Extinguishing Agent", values: ["Sodium Bi-Carbonate", "Sodium Bi-Carbonate", "Sodium Bi-Carbonate", "MAP Base Powder", "MAP Base Powder"] },
-      { label: "Fire Rating (IS:15683:2018)", values: ["55B", "89B", "144B", "3A, 89B", "4A, 144B"] },
-      { label: "Discharge Time (s)", values: [">15", ">18", ">23", ">18", ">23"] },
-      { label: "OD (mm)", values: ["140", "160", "180", "160", "180"] },
-      { label: "Filled Weight (Kg)", values: ["6.8", "9.5", "13", "11.4", "15.8"] },
-      { label: "Design Standard", values: ["CE", "CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683"] },
-    ],
   },
   {
     id: "mechanical-foam",
     img: foamImg,
     title: "Mechanical Foam Type",
     intro: "AFFF aqueous film-forming foam extinguisher for Class A and B fires. Suitable for fuel storage, hangars, paint booths and locations handling flammable liquids.",
-    models: ["MOD 4-S", "MOD 6-S", "MOD 9-S", "MODCT6"],
-    specs: [
-      { label: "Capacity (Kgs)", values: ["6", "9", "6", "9"] },
-      { label: "Type", values: ["Stored Pressure", "Stored Pressure", "Cartridge", "Cartridge"] },
-      { label: "Extinguishing Agent", values: ["Foam, AFFF", "Foam, AFFF", "Foam, AFFF", "Foam, AFFF"] },
-      { label: "Fire Rating (IS:15683:2018)", values: ["3A, 89B", "4A, 144B", "3A, 89B", "4A, 144B"] },
-      { label: "Discharge Time (s)", values: [">25", ">30", ">25", ">30"] },
-      { label: "OD (mm)", values: ["160", "180", "160", "180"] },
-      { label: "Filled Weight (Kg)", values: ["9.5", "13", "9.5", "15"] },
-      { label: "Design Standard", values: ["CE/EN3", "CE/EN3/IS15683", "CE/EN3", "CE/EN3/IS15683"] },
-    ],
   },
   {
     id: "co2",
     img: co2Img,
     title: "Carbon Dioxide Type",
     intro: "Stored-pressure CO₂ extinguisher with discharge horn — clean, residue-free and ideal for electrical equipment, server rooms, switchgear and laboratories.",
-    models: ["MCDO2", "MSDO3", "MCDO4.5", "MCDOA2", "MCDOA4.5"],
-    specs: [
-      { label: "Capacity (Kgs)", values: ["2", "3", "4.5", "2", "4.5"] },
-      { label: "Type", values: ["Stored Pressure", "Stored Pressure", "Stored Pressure", "Stored Pressure", "Stored Pressure"] },
-      { label: "Extinguishing Agent", values: ["Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide"] },
-      { label: "Fire Rating (IS:15683:2018)", values: ["21B", "34B", "55B", "21B", "55B"] },
-      { label: "Discharge Time (s)", values: [">8", ">10", ">15", ">8", ">15"] },
-      { label: "Propellent", values: ["Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide", "Carbon Dioxide"] },
-      { label: "OD (mm)", values: ["108", "140", "140", "108", "140"] },
-      { label: "Filled Weight (Kg)", values: ["9", "12", "16.5", "6.2", "11.85"] },
-      { label: "Design Standard", values: ["CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3/IS15683", "CE/EN3", "CE/EN3/IS15683"] },
-    ],
   },
 ];
 
@@ -303,31 +255,6 @@ function FireExtinguisherPage() {
                     </div>
                   )}
                   <p className="mt-4 text-foreground/75 leading-relaxed">{p.intro}</p>
-
-                  {p.specs && p.models && (
-                    <div className="mt-6 overflow-x-auto rounded-xl border border-border">
-                      <table className="w-full text-sm min-w-[640px]">
-                        <thead className="bg-muted/50">
-                          <tr>
-                            <th className="text-left font-semibold px-4 py-3 border-b border-border">Model No.</th>
-                            {p.models.map((m) => (
-                              <th key={m} className="text-left font-semibold px-4 py-3 border-b border-border whitespace-nowrap">{m}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {p.specs.map((row, ri) => (
-                            <tr key={row.label} className={ri % 2 ? "bg-card/40" : ""}>
-                              <td className="px-4 py-2.5 text-muted-foreground border-b border-border/50">{row.label}</td>
-                              {row.values.map((v, vi) => (
-                                <td key={vi} className="px-4 py-2.5 border-b border-border/50 whitespace-nowrap">{v}</td>
-                              ))}
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
                 </div>
               </motion.article>
             ))}
