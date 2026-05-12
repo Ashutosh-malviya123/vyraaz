@@ -347,7 +347,7 @@ function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-                className={`relative group overflow-hidden rounded-xl border border-border ${i === 0 || i === 4 ? "md:row-span-2 aspect-[3/4]" : "aspect-square"}`}
+                className="relative group overflow-hidden rounded-xl border border-border aspect-square"
               >
                 <img src={src} alt={`Vyraaz Firetech project ${i + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition" />
