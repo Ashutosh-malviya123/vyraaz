@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
-  Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin,
+  Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin, Menu, X,
   CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,6 +59,7 @@ const fadeUp: Variants = {
 
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
@@ -88,12 +89,42 @@ function Home() {
               </a>
             ))}
           </nav>
-          <a href="tel:+918103498409">
-            <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
-              <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
-            </Button>
-          </a>
+          <div className="flex items-center gap-2">
+            <a href="tel:+918103498409" className="hidden sm:block">
+              <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
+                <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+              </Button>
+            </a>
+            <button
+              onClick={() => setMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+              className="md:hidden w-11 h-11 grid place-items-center rounded-lg border border-border bg-card hover:bg-muted transition"
+            >
+              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
+        {menuOpen && (
+          <nav className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
+            <div className="px-6 py-4 flex flex-col gap-1">
+              {["Home", "About", "Products", "Projects", "Contact"].map((l) => (
+                <a
+                  key={l}
+                  href={`#${l.toLowerCase()}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="py-3 px-2 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-muted rounded-md transition"
+                >
+                  {l}
+                </a>
+              ))}
+              <a href="tel:+918103498409" className="sm:hidden mt-2">
+                <Button className="w-full bg-fire text-white shadow-glow">
+                  <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+                </Button>
+              </a>
+            </div>
+          </nav>
+        )}
       </header>
 
       {/* HERO */}
