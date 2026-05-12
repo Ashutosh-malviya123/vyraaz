@@ -47,8 +47,6 @@ const products = [
   { img: hydrantImg, title: "Fire Hydrant", desc: "A complete range of fire fighting equipment — hydrants, hoses, nozzles & landing valves — engineered to combat fires effectively and efficiently." },
   { img: extImg, title: "Fire Extinguisher", desc: "ABC, BC, CO₂, foam, water and K-type extinguishers suitable for every fire class, with sales, installation and on-time refilling." },
   { img: alarmImg, title: "Fire Alarm", desc: "Conventional and addressable fire alarm systems with smoke detectors, MCPs and panels — early detection, faster response." },
-  { img: pumpImg, title: "Fire Fighting Pumps", desc: "Electric, diesel and jockey pump sets with pressure boosters for hydrant and sprinkler networks of every scale." },
-  { img: sprinklerImg, title: "Sprinkler Systems", desc: "Automatic wet & dry sprinkler systems designed and installed as per IS / NFPA standards for total area coverage." },
 ];
 
 const projects = [p1, p2, p3, p4, p5, p6, p7, p8, p9];
