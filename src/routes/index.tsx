@@ -132,7 +132,7 @@ function Home() {
               </a>
             </motion.div>
             <motion.div variants={fadeUp} className="mt-20 grid grid-cols-3 max-w-xl gap-8">
-              {[["10+", "Years"], ["1500+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
+              {[["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
                 <div key={l}>
                   <div className="font-display text-4xl md:text-5xl text-fire">{n}</div>
                   <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">{l}</div>
@@ -309,9 +309,9 @@ function Home() {
           {/* Counters */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-24">
             {[
-              { n: "1500+", l: "Total Projects", icon: Briefcase },
+              { n: "100+", l: "Total Projects", icon: Briefcase },
               { n: "1200+", l: "Happy Customers", icon: Users },
-              { n: "25+", l: "Our Team", icon: Award },
+              { n: "50+", l: "Our Team", icon: Award },
               { n: "10+", l: "Years Experience", icon: Clock },
             ].map((s, i) => (
               <motion.div
