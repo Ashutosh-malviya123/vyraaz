@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import {
@@ -319,6 +319,9 @@ function Home() {
                     </div>
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  {p.title === "Fire Hydrant" && (
+                    <Link to="/products/fire-hydrant" className="absolute inset-0" aria-label="View Fire Hydrant products" />
+                  )}
                 </div>
               </motion.article>
             ))}
