@@ -369,7 +369,7 @@ function Home() {
             <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz</div>
             <h2 className="font-display text-5xl md:text-7xl uppercase">Safety You Can <span className="text-fire">Count On</span></h2>
           </motion.div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-3 md:gap-6">
             {[
               { icon: Shield, t: "Certified Equipment", d: "All products are ISI-marked and tested to Indian fire safety standards." },
               { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure correct placement, hydraulic design and code compliance." },
@@ -381,15 +381,15 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.12 }}
-                className="group relative p-10 rounded-3xl border border-border bg-card/50 backdrop-blur hover:border-brand transition-all overflow-hidden"
+                className="group relative p-4 md:p-10 rounded-2xl md:rounded-3xl border border-border bg-card/50 backdrop-blur hover:border-brand transition-all overflow-hidden"
               >
                 <div className="absolute -top-20 -right-20 w-48 h-48 bg-fire opacity-0 group-hover:opacity-20 blur-3xl rounded-full transition" />
                 <div className="relative">
-                  <div className="w-14 h-14 rounded-2xl bg-fire grid place-items-center text-white mb-6 shadow-fire">
-                    <f.icon className="w-7 h-7" />
+                  <div className="w-9 h-9 md:w-14 md:h-14 rounded-lg md:rounded-2xl bg-fire grid place-items-center text-white mb-3 md:mb-6 shadow-fire">
+                    <f.icon className="w-4 h-4 md:w-7 md:h-7" />
                   </div>
-                  <h3 className="font-display text-2xl uppercase mb-3">{f.t}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{f.d}</p>
+                  <h3 className="font-display text-sm md:text-2xl uppercase mb-1.5 md:mb-3 leading-tight">{f.t}</h3>
+                  <p className="text-[11px] md:text-base text-muted-foreground leading-snug md:leading-relaxed">{f.d}</p>
                 </div>
               </motion.div>
             ))}
