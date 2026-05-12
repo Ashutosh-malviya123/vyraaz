@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsFireHydrantRouteImport } from './routes/products.fire-hydrant'
+import { Route as ProductsFireExtinguisherRouteImport } from './routes/products.fire-extinguisher'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,44 @@ const ProductsFireHydrantRoute = ProductsFireHydrantRouteImport.update({
   path: '/products/fire-hydrant',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProductsFireExtinguisherRoute =
+  ProductsFireExtinguisherRouteImport.update({
+    id: '/products/fire-extinguisher',
+    path: '/products/fire-extinguisher',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/products/fire-hydrant'
+  fullPaths: '/' | '/products/fire-extinguisher' | '/products/fire-hydrant'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/products/fire-hydrant'
-  id: '__root__' | '/' | '/products/fire-hydrant'
+  to: '/' | '/products/fire-extinguisher' | '/products/fire-hydrant'
+  id:
+    | '__root__'
+    | '/'
+    | '/products/fire-extinguisher'
+    | '/products/fire-hydrant'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ProductsFireExtinguisherRoute: typeof ProductsFireExtinguisherRoute
   ProductsFireHydrantRoute: typeof ProductsFireHydrantRoute
 }
 
@@ -65,11 +80,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsFireHydrantRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/products/fire-extinguisher': {
+      id: '/products/fire-extinguisher'
+      path: '/products/fire-extinguisher'
+      fullPath: '/products/fire-extinguisher'
+      preLoaderRoute: typeof ProductsFireExtinguisherRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ProductsFireExtinguisherRoute: ProductsFireExtinguisherRoute,
   ProductsFireHydrantRoute: ProductsFireHydrantRoute,
 }
 export const routeTree = rootRouteImport
