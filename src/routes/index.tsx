@@ -520,30 +520,56 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault();
+              const f = e.currentTarget as HTMLFormElement;
+              const data = new FormData(f);
+              const name = String(data.get("name") || "").trim().slice(0, 100);
+              const phone = String(data.get("phone") || "").trim().slice(0, 20);
+              const email = String(data.get("email") || "").trim().slice(0, 100);
+              const message = String(data.get("message") || "").trim().slice(0, 1000);
+              if (!name || !phone || !email || !message) {
+                alert("Please fill in all fields before submitting.");
+                return;
+              }
+              const text =
+                `*New Enquiry — Vyraaz Firetech*%0A%0A` +
+                `*Name:* ${encodeURIComponent(name)}%0A` +
+                `*Phone:* ${encodeURIComponent(phone)}%0A` +
+                `*Email:* ${encodeURIComponent(email)}%0A` +
+                `*Requirement:* ${encodeURIComponent(message)}`;
+              window.open(`https://wa.me/918103498409?text=${text}`, "_blank");
+              f.reset();
+            }}
             className="bg-card/70 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-10 space-y-5 shadow-2xl"
           >
             <h3 className="font-display text-3xl uppercase mb-2">Request a Quote</h3>
-            <p className="text-sm text-muted-foreground mb-6">Fill the form and our team will reach out within 24 hours.</p>
+            <p className="text-sm text-muted-foreground mb-6">Fill the form and send your enquiry directly to us on WhatsApp.</p>
             {[
-              { ph: "Your Name", type: "text" },
-              { ph: "Phone Number", type: "tel" },
-              { ph: "Email Address", type: "email" },
+              { ph: "Your Name", type: "text", name: "name", maxLength: 100 },
+              { ph: "Phone Number", type: "tel", name: "phone", maxLength: 20 },
+              { ph: "Email Address", type: "email", name: "email", maxLength: 100 },
             ].map((f) => (
               <input
                 key={f.ph}
                 type={f.type}
+                name={f.name}
+                maxLength={f.maxLength}
+                required
                 placeholder={f.ph}
                 className="w-full bg-background/60 border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition"
               />
             ))}
             <textarea
+              name="message"
+              maxLength={1000}
+              required
               rows={4}
               placeholder="Tell us about your requirement"
               className="w-full bg-background/60 border border-border rounded-xl px-5 py-4 text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-brand focus:ring-2 focus:ring-brand/30 transition resize-none"
             />
             <Button type="submit" className="w-full h-14 text-base bg-fire text-white shadow-fire hover:opacity-90 group">
-              Send Enquiry
+              Send via WhatsApp
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
             </Button>
           </motion.form>
