@@ -126,28 +126,52 @@ function Home() {
       </header>
 
       {/* HERO */}
-      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center pt-20">
+      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
-          <img src={heroImg} alt="Industrial fire protection pump room" width={1920} height={1088} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/40" />
+          <video
+            src="/hero-bg.mp4"
+            poster="/hero-poster.jpg"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/85" />
+          <div className="absolute inset-0 bg-background/30" />
         </motion.div>
-        <div className="absolute inset-0 grid-bg opacity-30" />
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 w-full">
-          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.12 } } }} className="max-w-3xl">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-ember text-xs uppercase tracking-[0.2em] mb-8">
+        <div className="relative w-full max-w-6xl mx-auto px-6 py-24 text-center">
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }}>
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-ember text-xs uppercase tracking-[0.3em] mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Indore's Trusted Fire Safety Partner
             </motion.div>
-            <motion.h1 variants={fadeUp} className="font-display text-6xl md:text-8xl lg:text-9xl leading-[0.9] uppercase">
-              Safeguarding<br/>
-              <span className="text-fire">Tomorrow,</span><br/>
-              Today.
+
+            <motion.h1
+              variants={fadeUp}
+              className="font-display uppercase leading-[0.85] tracking-tight text-7xl sm:text-8xl md:text-[10rem] lg:text-[13rem]"
+              style={{ textShadow: "0 6px 40px rgba(0,0,0,0.6)" }}
+            >
+              <span className="block text-foreground">Vyraaz</span>
+              <span className="block text-fire" style={{ textShadow: "0 0 60px rgba(239,68,68,0.55)" }}>
+                Firetech
+              </span>
             </motion.h1>
-            <motion.p variants={fadeUp} className="mt-8 text-lg md:text-xl text-foreground/75 max-w-2xl leading-relaxed">
-              At <span className="text-foreground font-semibold">Vyraaz Firetech</span>, safety is our top priority. We are an established seller, distributor and installer of premium fire fighting equipment and a complete range of safety products across Indore and Madhya Pradesh.
+
+            <motion.div variants={fadeUp} className="mt-8 flex items-center justify-center gap-4">
+              <span className="h-px w-12 bg-fire/60" />
+              <span className="text-sm md:text-base uppercase tracking-[0.4em] text-foreground/85">
+                Safeguarding Tomorrow, Today
+              </span>
+              <span className="h-px w-12 bg-fire/60" />
+            </motion.div>
+
+            <motion.p variants={fadeUp} className="mt-8 mx-auto max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed">
+              Premium fire fighting equipment, installation, refilling and AMC services across Indore and Madhya Pradesh.
             </motion.p>
-            <motion.div variants={fadeUp} className="mt-12 flex flex-wrap gap-4">
+
+            <motion.div variants={fadeUp} className="mt-12 flex flex-wrap justify-center gap-4">
               <a href="#products">
                 <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
                   Explore Products
@@ -160,7 +184,8 @@ function Home() {
                 </Button>
               </a>
             </motion.div>
-            <motion.div variants={fadeUp} className="mt-20 grid grid-cols-3 max-w-xl gap-8">
+
+            <motion.div variants={fadeUp} className="mt-16 grid grid-cols-3 max-w-xl mx-auto gap-8">
               {[["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
                 <div key={l}>
                   <div className="font-display text-4xl md:text-5xl text-fire">{n}</div>
@@ -169,13 +194,6 @@ function Home() {
               ))}
             </motion.div>
           </motion.div>
-        </div>
-
-        {/* Floating side keywords */}
-        <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4 pr-8 opacity-20 font-display text-7xl uppercase leading-none">
-          <div>Hydrant</div>
-          <div className="text-fire opacity-100">Pumps</div>
-          <div>Alarm</div>
         </div>
       </section>
 
