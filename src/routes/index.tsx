@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import heroImg from "@/assets/hero-fire-protection.jpg";
+import logo from "@/assets/vyraaz-logo.png";
 import hydrantImg from "@/assets/product-hydrant.jpg";
 import extImg from "@/assets/product-extinguisher.jpg";
 import alarmImg from "@/assets/product-alarm.jpg";
@@ -69,17 +70,8 @@ function Home() {
       {/* NAV */}
       <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-xl bg-background/70 border-b border-border/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <a href="#top" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-fire blur-md opacity-60 group-hover:opacity-100 transition" />
-              <div className="relative w-10 h-10 rounded-lg bg-fire grid place-items-center text-white">
-                <Flame className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <div className="font-display text-xl tracking-wider leading-none">VYRAAZ</div>
-              <div className="text-[10px] tracking-[0.3em] text-muted-foreground uppercase">Firetech</div>
-            </div>
+          <a href="#top" className="flex items-center group">
+            <img src={logo} alt="Vyraaz Firetech" className="h-10 md:h-12 w-auto object-contain" />
           </a>
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             {["Home", "About", "Products", "Projects", "Contact"].map((l) => (
@@ -541,13 +533,8 @@ function Home() {
       <footer className="relative border-t border-border py-12 bg-card/40">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-lg bg-fire grid place-items-center text-white">
-              <Flame className="w-5 h-5" />
-            </div>
-            <div>
-              <div className="font-display text-lg tracking-wider">VYRAAZ FIRETECH</div>
-              <div className="text-xs text-muted-foreground">Indore · Madhya Pradesh</div>
-            </div>
+            <img src={logo} alt="Vyraaz Firetech" className="h-12 w-auto object-contain" />
+            <div className="text-xs text-muted-foreground">Indore · Madhya Pradesh</div>
           </div>
           <div className="text-center text-sm text-muted-foreground">
             © {new Date().getFullYear()} Vyraaz Firetech. All rights reserved.
