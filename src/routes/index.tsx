@@ -182,7 +182,7 @@ function Home() {
               </a>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="mt-16 grid grid-cols-3 max-w-xl mx-auto gap-8">
+            <motion.div variants={fadeUp} className="mt-14 grid grid-cols-3 max-w-md gap-6">
               {[["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
                 <div key={l}>
                   <div className="font-display text-4xl md:text-5xl text-fire">{n}</div>
