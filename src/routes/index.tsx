@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin, Menu, X,
-  CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
+  CheckCircle2, ArrowRight, ArrowLeft, Award, Users, Briefcase, Clock, Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -497,31 +497,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <div className="flex w-max marquee-track gap-4 md:gap-6 pr-4 md:pr-6">
-              {[...Array(2)].flatMap((_, dup) =>
-                [
-                  { src: clientAlimco, name: "ALIMCO" },
-                  { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
-                  { src: clientHp, name: "Hindustan Petroleum" },
-                  { src: clientNexa, name: "NEXA" },
-                ].map((c) => (
-                  <div
-                    key={`${dup}-${c.name}`}
-                    className="shrink-0 w-[calc((100vw-3rem-2rem)/3)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
-                    aria-hidden={dup === 1 ? "true" : undefined}
-                  >
-                    <img
-                      src={c.src}
-                      alt={`${c.name} — Vyraaz Firetech client`}
-                      loading="lazy"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <ClientsCarousel />
         </div>
       </section>
 
@@ -725,6 +701,65 @@ function Home() {
           </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function ClientsCarousel() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const clients = [
+    { src: clientAlimco, name: "ALIMCO" },
+    { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
+    { src: clientHp, name: "Hindustan Petroleum" },
+    { src: clientNexa, name: "NEXA" },
+  ];
+  const scrollByCard = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-client-card]");
+    const gap = 24;
+    const step = (card?.offsetWidth ?? el.clientWidth / 3) + gap;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+  return (
+    <div className="relative">
+      <div
+        ref={scrollerRef}
+        className="overflow-x-auto scroll-smooth snap-x snap-mandatory [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)] [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        <div className="flex w-max gap-4 md:gap-6 px-2">
+          {[...clients, ...clients].map((c, i) => (
+            <div
+              key={`${c.name}-${i}`}
+              data-client-card
+              className="snap-start shrink-0 w-[calc((100vw-3rem-2rem)/3)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
+            >
+              <img
+                src={c.src}
+                alt={`${c.name} — Vyraaz Firetech client`}
+                loading="lazy"
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button
+        type="button"
+        aria-label="Previous clients"
+        onClick={() => scrollByCard(-1)}
+        className="absolute left-1 md:-left-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-fire text-white shadow-fire grid place-items-center hover:scale-110 transition"
+      >
+        <ArrowLeft className="w-5 h-5" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next clients"
+        onClick={() => scrollByCard(1)}
+        className="absolute right-1 md:-right-4 top-1/2 -translate-y-1/2 z-10 h-10 w-10 md:h-12 md:w-12 rounded-full bg-fire text-white shadow-fire grid place-items-center hover:scale-110 transition"
+      >
+        <ArrowRight className="w-5 h-5" />
+      </button>
     </div>
   );
 }
