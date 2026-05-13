@@ -486,6 +486,63 @@ function Home() {
         </div>
       </section>
 
+      {/* OUR CLIENTS */}
+      <section className="relative py-16 md:py-28 border-t border-border/40">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Our Clients</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase">Trusted by <span className="text-fire">Industry Leaders</span></h2>
+            <p className="text-foreground/70 mt-4 md:mt-6 text-sm md:text-base">
+              From government enterprises to leading automotive and energy brands, organisations across India rely on Vyraaz Firetech for their fire safety needs.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { src: clientAlimco, name: "ALIMCO" },
+              { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
+              { src: clientHp, name: "Hindustan Petroleum" },
+              { src: clientNexa, name: "NEXA" },
+            ].map((c, i) => (
+              <motion.div
+                key={c.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-8 hover:border-fire transition-all hover:shadow-fire"
+              >
+                <img
+                  src={c.src}
+                  alt={`${c.name} — Vyraaz Firetech client`}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                />
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="mt-10 md:mt-14 flex flex-wrap justify-center gap-2 md:gap-3">
+            {[
+              "Government & PSU",
+              "Education",
+              "Oil & Energy",
+              "Automotive",
+              "Hospitality",
+              "Manufacturing",
+              "Healthcare",
+            ].map((tag) => (
+              <span
+                key={tag}
+                className="text-[11px] md:text-xs uppercase tracking-[0.2em] px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-border text-muted-foreground hover:border-fire hover:text-fire transition"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CONTACT */}
       <section id="contact" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-brand-dark/30 to-background" />
