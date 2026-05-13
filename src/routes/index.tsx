@@ -498,7 +498,7 @@ function Home() {
           </motion.div>
 
           <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <div className="flex w-max animate-marquee gap-4 md:gap-6">
+            <div className="flex w-max marquee-track gap-4 md:gap-6 pr-4 md:pr-6">
               {[...Array(2)].flatMap((_, dup) =>
                 [
                   { src: clientAlimco, name: "ALIMCO" },
