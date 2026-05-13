@@ -7,7 +7,6 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import heroImg from "@/assets/hero-fire-protection.jpg";
 import logo from "@/assets/vyraaz-logo.png";
 import hydrantImg from "@/assets/product-hydrant.jpg";
 import extImg from "@/assets/product-extinguisher.jpg";
