@@ -63,6 +63,25 @@ const fadeUp: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
+function FireDivider() {
+  return (
+    <div aria-hidden className="relative w-full py-8 md:py-12 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 flex items-center gap-4 md:gap-6">
+        <span className="flex-1 h-px bg-gradient-to-r from-transparent via-fire/40 to-fire/70" />
+        <span className="relative grid place-items-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-fire/40 bg-fire/10 backdrop-blur-sm shadow-fire">
+          <span className="absolute inset-0 rounded-full bg-fire/20 blur-md animate-pulse" />
+          <Flame className="relative w-4 h-4 md:w-5 md:h-5 text-fire" strokeWidth={2.2} />
+        </span>
+        <span className="hidden sm:flex items-center gap-3">
+          <span className="w-1.5 h-1.5 rounded-full bg-fire/70" />
+          <span className="w-1 h-1 rounded-full bg-fire/40" />
+        </span>
+        <span className="flex-1 h-px bg-gradient-to-l from-transparent via-fire/40 to-fire/70" />
+      </div>
+    </div>
+  );
+}
+
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -302,6 +321,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* PRODUCTS */}
       <section id="products" className="relative py-32">
         <div className="max-w-7xl mx-auto px-6">
@@ -352,6 +372,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* PROJECTS */}
       <section id="projects" className="relative py-32 bg-card/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-6">
@@ -465,6 +486,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* WHY CHOOSE */}
       <section className="relative py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
@@ -500,6 +522,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* OUR CLIENTS */}
       <section className="relative py-16 md:py-28 border-t border-border/40">
         <div className="max-w-7xl mx-auto px-6">
@@ -515,6 +538,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* CONTACT */}
       <section id="contact" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-brand-dark/30 to-background" />
