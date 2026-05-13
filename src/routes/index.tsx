@@ -649,8 +649,8 @@ function Home() {
           <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-muted-foreground">
             <div>© {new Date().getFullYear()} Vyraaz Firetech. All rights reserved.</div>
             <div className="flex gap-5">
-              <a href="#" className="hover:text-foreground transition">Privacy Policy</a>
-              <a href="#" className="hover:text-foreground transition">Terms of Service</a>
+              <Link to="/privacy" className="hover:text-foreground transition">Privacy Policy</Link>
+              <Link to="/terms" className="hover:text-foreground transition">Terms of Service</Link>
             </div>
           </div>
         </div>
