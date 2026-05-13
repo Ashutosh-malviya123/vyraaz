@@ -497,48 +497,30 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[
-              { src: clientAlimco, name: "ALIMCO" },
-              { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
-              { src: clientHp, name: "Hindustan Petroleum" },
-              { src: clientNexa, name: "NEXA" },
-            ].map((c, i) => (
-              <motion.div
-                key={c.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="group aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-8 hover:border-fire transition-all hover:shadow-fire"
-              >
-                <img
-                  src={c.src}
-                  alt={`${c.name} — Vyraaz Firetech client`}
-                  loading="lazy"
-                  className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          <div className="mt-10 md:mt-14 flex flex-wrap justify-center gap-2 md:gap-3">
-            {[
-              "Government & PSU",
-              "Education",
-              "Oil & Energy",
-              "Automotive",
-              "Hospitality",
-              "Manufacturing",
-              "Healthcare",
-            ].map((tag) => (
-              <span
-                key={tag}
-                className="text-[11px] md:text-xs uppercase tracking-[0.2em] px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-border text-muted-foreground hover:border-fire hover:text-fire transition"
-              >
-                {tag}
-              </span>
-            ))}
+          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            <div className="flex w-max marquee-track gap-4 md:gap-6 pr-4 md:pr-6">
+              {[...Array(2)].flatMap((_, dup) =>
+                [
+                  { src: clientAlimco, name: "ALIMCO" },
+                  { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
+                  { src: clientHp, name: "Hindustan Petroleum" },
+                  { src: clientNexa, name: "NEXA" },
+                ].map((c) => (
+                  <div
+                    key={`${dup}-${c.name}`}
+                    className="shrink-0 w-[calc((100vw-3rem-2rem)/3)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
+                    aria-hidden={dup === 1 ? "true" : undefined}
+                  >
+                    <img
+                      src={c.src}
+                      alt={`${c.name} — Vyraaz Firetech client`}
+                      loading="lazy"
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                ))
+              )}
+            </div>
           </div>
         </div>
       </section>
