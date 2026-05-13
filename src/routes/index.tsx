@@ -529,6 +529,29 @@ function Home() {
         </div>
       </section>
 
+      {/* MAP */}
+      <section className="relative border-t border-border">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="mb-8">
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Visit Us</div>
+            <h2 className="font-display text-3xl md:text-5xl uppercase">Find <span className="text-fire">Vyraaz Firetech</span></h2>
+          </div>
+          <div className="rounded-2xl overflow-hidden border border-border shadow-glow">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3637.758671043677!2d75.85857257516048!3d22.694984028473943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fdb5d2bbfc9f%3A0x1fbecc6b0917ef2d!2sVyraaz%20FireTech!5e1!3m2!1sen!2sin!4v1778676696770!5m2!1sen!2sin"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Vyraaz Firetech location"
+              className="w-full block"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="relative border-t border-border py-12 bg-card/40">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center">
