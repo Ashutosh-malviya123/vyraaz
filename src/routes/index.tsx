@@ -35,12 +35,12 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Droplets, label: "Fire Hydrant" },
-  { icon: Shield, label: "Fire Safety" },
-  { icon: Bell, label: "Fire Alarm" },
-  { icon: Siren, label: "Fire Station" },
-  { icon: ArrowRight, label: "Fire Exit" },
-  { icon: Flame, label: "Fire Bell" },
+  { icon: Flame, label: "Fire Extinguisher Service" },
+  { icon: Droplets, label: "Fire Hydrant & Sprinkler Service" },
+  { icon: Bell, label: "Fire Alarm System" },
+  { icon: Wrench, label: "AMC of Fire System" },
+  { icon: Users, label: "Demonstration Service" },
+  { icon: Siren, label: "Extinguisher Supply & Refilling" },
 ];
 
 const products = [
