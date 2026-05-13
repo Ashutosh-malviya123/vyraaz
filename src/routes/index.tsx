@@ -574,19 +574,84 @@ function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer className="relative border-t border-border py-12 bg-card/40">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 items-center">
-          <div className="flex items-center gap-3">
-            <img src={logo} alt="Vyraaz Firetech" className="h-12 w-auto object-contain" />
-            <div className="text-xs text-muted-foreground">Indore · Madhya Pradesh</div>
+      <footer className="relative border-t border-border bg-card/40">
+        <div className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-12">
+          {/* Brand */}
+          <div className="md:col-span-4 space-y-4">
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Vyraaz Firetech" className="h-12 w-auto object-contain" />
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+              Vyraaz Firetech is an Indore-based fire safety company providing sales, installation, refilling and AMC of fire protection systems across Madhya Pradesh.
+            </p>
+            <div className="flex gap-3 pt-2">
+              <a href="https://wa.me/919999999999" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+                <PhoneCall className="w-4 h-4" />
+              </a>
+              <a href="mailto:info@vyraazfiretech.com" aria-label="Email" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+                <Mail className="w-4 h-4" />
+              </a>
+              <a href="https://maps.google.com/?q=Vyraaz+FireTech+Indore" target="_blank" rel="noreferrer" aria-label="Location" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+                <MapPin className="w-4 h-4" />
+              </a>
+            </div>
           </div>
-          <div className="text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Vyraaz Firetech. All rights reserved.
+
+          {/* Quick Links */}
+          <div className="md:col-span-2">
+            <div className="text-xs uppercase tracking-[0.2em] text-ember mb-4">Company</div>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li><a href="#home" className="hover:text-foreground transition">Home</a></li>
+              <li><a href="#about" className="hover:text-foreground transition">About</a></li>
+              <li><a href="#projects" className="hover:text-foreground transition">Projects</a></li>
+              <li><a href="#contact" className="hover:text-foreground transition">Contact</a></li>
+            </ul>
           </div>
-          <div className="flex md:justify-end gap-4 text-sm text-muted-foreground">
-            <a href="#about" className="hover:text-foreground transition">About</a>
-            <a href="#products" className="hover:text-foreground transition">Products</a>
-            <a href="#contact" className="hover:text-foreground transition">Contact</a>
+
+          {/* Services */}
+          <div className="md:col-span-3">
+            <div className="text-xs uppercase tracking-[0.2em] text-ember mb-4">Our Services</div>
+            <ul className="space-y-2 text-sm text-muted-foreground">
+              <li>Fire Extinguisher Service</li>
+              <li>Fire Hydrant &amp; Sprinkler</li>
+              <li>Fire Alarm System</li>
+              <li>AMC of Fire System</li>
+              <li>Demonstration Service</li>
+              <li>Extinguisher Refilling</li>
+            </ul>
+          </div>
+
+          {/* Contact */}
+          <div className="md:col-span-3">
+            <div className="text-xs uppercase tracking-[0.2em] text-ember mb-4">Get in Touch</div>
+            <ul className="space-y-3 text-sm text-muted-foreground">
+              <li className="flex gap-3">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
+                <span>Indore, Madhya Pradesh, India</span>
+              </li>
+              <li className="flex gap-3">
+                <PhoneCall className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
+                <a href="tel:+919999999999" className="hover:text-foreground transition">+91 99999 99999</a>
+              </li>
+              <li className="flex gap-3">
+                <Mail className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
+                <a href="mailto:info@vyraazfiretech.com" className="hover:text-foreground transition break-all">info@vyraazfiretech.com</a>
+              </li>
+              <li className="flex gap-3">
+                <Clock className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
+                <span>Mon – Sat: 9:00 AM – 7:00 PM<br/>24/7 Emergency Support</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-border">
+          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col md:flex-row gap-3 items-center justify-between text-xs text-muted-foreground">
+            <div>© {new Date().getFullYear()} Vyraaz Firetech. All rights reserved.</div>
+            <div className="flex gap-5">
+              <a href="#" className="hover:text-foreground transition">Privacy Policy</a>
+              <a href="#" className="hover:text-foreground transition">Terms of Service</a>
+            </div>
           </div>
         </div>
       </footer>
