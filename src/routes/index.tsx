@@ -25,6 +25,11 @@ import p8 from "@/assets/projects/project-8.jpeg";
 import p9 from "@/assets/projects/project-9.jpeg";
 import p10 from "@/assets/projects/project-10.jpeg";
 
+import clientAlimco from "@/assets/clients/alimco.png";
+import clientDavv from "@/assets/clients/davv.png";
+import clientHp from "@/assets/clients/hp.png";
+import clientNexa from "@/assets/clients/nexa.png";
+
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
