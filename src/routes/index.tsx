@@ -167,17 +167,6 @@ function Home() {
               </span>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
-              <span className="h-[2px] w-14 bg-gradient-to-r from-fire to-transparent" />
-              <span className="text-xs md:text-sm uppercase tracking-[0.45em] text-white/95 font-medium">
-                Safeguarding Tomorrow, Today
-              </span>
-            </motion.div>
-
-            <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed font-light" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.7)" }}>
-              Premium fire fighting equipment, installation, refilling and AMC services across <span className="text-white font-medium">Indore</span> and <span className="text-white font-medium">Madhya Pradesh</span>.
-            </motion.p>
-
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
               <a href="#products">
                 <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
