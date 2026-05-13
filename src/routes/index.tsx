@@ -126,7 +126,7 @@ function Home() {
 
       {/* HERO */}
       <section id="top" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
+        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0 bg-black">
           <video
             src="/hero-bg.mp4"
             poster="/hero-poster.jpg"
@@ -135,7 +135,7 @@ function Home() {
             loop
             playsInline
             preload="auto"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
         </motion.div>
