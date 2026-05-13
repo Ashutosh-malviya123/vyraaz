@@ -194,10 +194,10 @@ function Home() {
       </section>
 
       {/* MARQUEE */}
-      <div className="relative py-6 border-y border-border bg-card/40 overflow-hidden">
-        <div className="flex marquee-track gap-16 whitespace-nowrap font-display text-3xl md:text-5xl uppercase">
-          {Array.from({ length: 2 }).map((_, i) => (
-            <div key={i} className="flex gap-16 items-center">
+      <div className="relative py-4 md:py-6 border-y border-border bg-card/40 overflow-hidden">
+        <div className="flex marquee-track-fast gap-8 md:gap-16 whitespace-nowrap font-display text-xl md:text-5xl uppercase">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="flex gap-8 md:gap-16 items-center">
               {["Fire Alarm System", "•", "Fire Fighting Pumps", "•", "Fire Hydrant System", "•", "Fire Extinguishers", "•", "Sprinkler Systems", "•"].map((t, j) => (
                 <span key={j} className={t === "•" ? "text-brand" : "text-foreground/40 hover:text-foreground transition"}>{t}</span>
               ))}
