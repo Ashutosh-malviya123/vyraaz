@@ -65,18 +65,39 @@ const fadeUp: Variants = {
 
 function FireDivider() {
   return (
-    <div aria-hidden className="relative w-full py-8 md:py-12 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 flex items-center gap-4 md:gap-6">
-        <span className="flex-1 h-px bg-gradient-to-r from-transparent via-fire/40 to-fire/70" />
-        <span className="relative grid place-items-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-fire/40 bg-fire/10 backdrop-blur-sm shadow-fire">
-          <span className="absolute inset-0 rounded-full bg-fire/20 blur-md animate-pulse" />
-          <Flame className="relative w-4 h-4 md:w-5 md:h-5 text-fire" strokeWidth={2.2} />
-        </span>
-        <span className="hidden sm:flex items-center gap-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-fire/70" />
-          <span className="w-1 h-1 rounded-full bg-fire/40" />
-        </span>
-        <span className="flex-1 h-px bg-gradient-to-l from-transparent via-fire/40 to-fire/70" />
+    <div aria-hidden className="relative w-full py-10 md:py-16 overflow-hidden">
+      {/* hazard tape strip */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-6 md:h-8 opacity-[0.08] hazard-tape" />
+      {/* glowing ember bar */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[2px] bg-gradient-to-r from-transparent via-fire to-transparent" />
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-12 bg-gradient-to-r from-transparent via-fire/20 to-transparent blur-2xl" />
+
+      <div className="relative max-w-6xl mx-auto px-6 flex items-center justify-between">
+        {/* left flames */}
+        <div className="flex items-end gap-3 md:gap-5 opacity-80">
+          <Flame className="w-3 h-3 md:w-4 md:h-4 text-fire/50 animate-flicker" style={{ animationDelay: "0.2s" }} strokeWidth={2.4} />
+          <Flame className="w-4 h-4 md:w-6 md:h-6 text-ember animate-flicker" style={{ animationDelay: "0.6s" }} strokeWidth={2.2} />
+          <Flame className="w-3 h-3 md:w-5 md:h-5 text-fire/70 animate-flicker" style={{ animationDelay: "0.4s" }} strokeWidth={2.2} />
+        </div>
+
+        {/* center medallion */}
+        <div className="relative grid place-items-center">
+          <span className="absolute -inset-3 rounded-full bg-fire/30 blur-2xl animate-pulse" />
+          <span className="absolute inset-0 rounded-full border border-fire/30 animate-ping" />
+          <span className="relative grid place-items-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-fire via-ember to-fire/80 shadow-fire border border-white/20">
+            <Flame className="w-6 h-6 md:w-7 md:h-7 text-white drop-shadow animate-flicker" fill="currentColor" strokeWidth={1.5} />
+          </span>
+          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-[9px] md:text-[10px] uppercase tracking-[0.4em] text-fire/80 font-bold whitespace-nowrap">
+            Vyraaz
+          </span>
+        </div>
+
+        {/* right flames */}
+        <div className="flex items-end gap-3 md:gap-5 opacity-80">
+          <Flame className="w-3 h-3 md:w-5 md:h-5 text-fire/70 animate-flicker" style={{ animationDelay: "0.5s" }} strokeWidth={2.2} />
+          <Flame className="w-4 h-4 md:w-6 md:h-6 text-ember animate-flicker" style={{ animationDelay: "0.3s" }} strokeWidth={2.2} />
+          <Flame className="w-3 h-3 md:w-4 md:h-4 text-fire/50 animate-flicker" style={{ animationDelay: "0.7s" }} strokeWidth={2.4} />
+        </div>
       </div>
     </div>
   );
