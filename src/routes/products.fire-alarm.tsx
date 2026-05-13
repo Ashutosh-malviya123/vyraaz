@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle2, Flame, Menu, X, PhoneCall } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Menu, X, PhoneCall } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/vyraaz-logo.png";
 import { useState } from "react";
 
 import heatImg from "@/assets/alarm-products/heat-detector.jpg";
@@ -87,17 +88,8 @@ function FireAlarmPage() {
       {/* HEADER */}
       <header className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/50">
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 bg-fire blur-md opacity-60 group-hover:opacity-100 transition" />
-              <div className="relative w-10 h-10 rounded-lg bg-fire grid place-items-center text-white">
-                <Flame className="w-5 h-5" />
-              </div>
-            </div>
-            <div>
-              <div className="font-display text-xl tracking-wider leading-none">VYRAAZ</div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Firetech</div>
-            </div>
+          <Link to="/" className="flex items-center group">
+            <img src={logo} alt="Vyraaz Firetech" className="h-10 md:h-12 w-auto object-contain" />
           </Link>
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             {navLinks.map((l) => (
