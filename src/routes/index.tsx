@@ -585,7 +585,7 @@ function Home() {
               Vyraaz Firetech is an Indore-based fire safety company providing sales, installation, refilling and AMC of fire protection systems across Madhya Pradesh.
             </p>
             <div className="flex gap-3 pt-2">
-              <a href="https://wa.me/919999999999" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+              <a href="https://wa.me/918103498409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
                 <PhoneCall className="w-4 h-4" />
               </a>
               <a href="mailto:info@vyraazfiretech.com" aria-label="Email" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
@@ -631,7 +631,7 @@ function Home() {
               </li>
               <li className="flex gap-3">
                 <PhoneCall className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
-                <a href="tel:+919999999999" className="hover:text-foreground transition">+91 99999 99999</a>
+                <a href="tel:+918103498409" className="hover:text-foreground transition">+91 81034 98409</a>
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
