@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsFireHydrantRouteImport } from './routes/products.fire-hydrant'
 import { Route as ProductsFireExtinguisherRouteImport } from './routes/products.fire-extinguisher'
 import { Route as ProductsFireAlarmRouteImport } from './routes/products.fire-alarm'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -45,6 +51,7 @@ const ProductsFireAlarmRoute = ProductsFireAlarmRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/products/fire-alarm': typeof ProductsFireAlarmRoute
   '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
@@ -52,6 +59,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/products/fire-alarm': typeof ProductsFireAlarmRoute
   '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
@@ -60,6 +68,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/products/fire-alarm': typeof ProductsFireAlarmRoute
   '/products/fire-extinguisher': typeof ProductsFireExtinguisherRoute
   '/products/fire-hydrant': typeof ProductsFireHydrantRoute
@@ -69,6 +78,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/privacy'
+    | '/terms'
     | '/products/fire-alarm'
     | '/products/fire-extinguisher'
     | '/products/fire-hydrant'
@@ -76,6 +86,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/privacy'
+    | '/terms'
     | '/products/fire-alarm'
     | '/products/fire-extinguisher'
     | '/products/fire-hydrant'
@@ -83,6 +94,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/privacy'
+    | '/terms'
     | '/products/fire-alarm'
     | '/products/fire-extinguisher'
     | '/products/fire-hydrant'
@@ -91,6 +103,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   ProductsFireAlarmRoute: typeof ProductsFireAlarmRoute
   ProductsFireExtinguisherRoute: typeof ProductsFireExtinguisherRoute
   ProductsFireHydrantRoute: typeof ProductsFireHydrantRoute
@@ -98,6 +111,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -139,6 +159,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   ProductsFireAlarmRoute: ProductsFireAlarmRoute,
   ProductsFireExtinguisherRoute: ProductsFireExtinguisherRoute,
   ProductsFireHydrantRoute: ProductsFireHydrantRoute,
