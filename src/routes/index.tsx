@@ -246,6 +246,7 @@ function Home() {
         </div>
       </div>
 
+      <FireDivider />
       {/* ABOUT */}
       <section id="about" className="relative py-32">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
@@ -287,6 +288,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* FEATURES */}
       <section className="relative py-24 bg-linear-to-b from-background via-card/40 to-background border-y border-border overflow-hidden">
         {/* Decorative blurs */}
