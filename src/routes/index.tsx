@@ -267,7 +267,12 @@ function Home() {
                       : "bg-fire text-white shadow-fire"
                   }`}
                 >
-                  <f.icon className="w-5 h-5 md:w-7 md:h-7" />
+                  <f.icon
+                    className="w-5 h-5 md:w-7 md:h-7"
+                    {...(i % 2 === 0
+                      ? { fill: "#ffffff", stroke: "#000000", strokeWidth: 1.75 }
+                      : {})}
+                  />
                 </div>
                 <div className="relative font-display text-sm md:text-xl uppercase tracking-wider leading-tight">{f.label}</div>
                 <div className={`relative mt-1 md:mt-2 h-0.5 w-0 group-hover:w-8 transition-all duration-500 ${i % 2 === 0 ? "bg-white" : "bg-fire"}`} />
