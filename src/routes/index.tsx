@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState } from "react";
 import {
   Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin, Menu, X,
-  CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
+  CheckCircle2, ArrowRight, ArrowLeft, Award, Users, Briefcase, Clock, Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -497,31 +497,7 @@ function Home() {
             </p>
           </motion.div>
 
-          <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-            <div className="flex w-max marquee-track gap-4 md:gap-6 pr-4 md:pr-6">
-              {[...Array(2)].flatMap((_, dup) =>
-                [
-                  { src: clientAlimco, name: "ALIMCO" },
-                  { src: clientDavv, name: "Devi Ahilya Vishwavidyalaya" },
-                  { src: clientHp, name: "Hindustan Petroleum" },
-                  { src: clientNexa, name: "NEXA" },
-                ].map((c) => (
-                  <div
-                    key={`${dup}-${c.name}`}
-                    className="shrink-0 w-[calc((100vw-3rem-2rem)/3)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
-                    aria-hidden={dup === 1 ? "true" : undefined}
-                  >
-                    <img
-                      src={c.src}
-                      alt={`${c.name} — Vyraaz Firetech client`}
-                      loading="lazy"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                ))
-              )}
-            </div>
-          </div>
+          <ClientsCarousel />
         </div>
       </section>
 
