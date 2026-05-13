@@ -321,6 +321,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* PRODUCTS */}
       <section id="products" className="relative py-32">
         <div className="max-w-7xl mx-auto px-6">
@@ -371,6 +372,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* PROJECTS */}
       <section id="projects" className="relative py-32 bg-card/30 border-y border-border">
         <div className="max-w-7xl mx-auto px-6">
@@ -484,6 +486,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* WHY CHOOSE */}
       <section className="relative py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
@@ -519,6 +522,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* OUR CLIENTS */}
       <section className="relative py-16 md:py-28 border-t border-border/40">
         <div className="max-w-7xl mx-auto px-6">
@@ -534,6 +538,7 @@ function Home() {
         </div>
       </section>
 
+      <FireDivider />
       {/* CONTACT */}
       <section id="contact" className="relative py-32 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-brand-dark/30 to-background" />
