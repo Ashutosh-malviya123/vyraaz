@@ -125,7 +125,7 @@ function Home() {
       </header>
 
       {/* HERO */}
-      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
           <video
             src="/hero-bg.mp4"
@@ -140,15 +140,15 @@ function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
         </motion.div>
 
-        <div className="relative w-full max-w-6xl mx-auto px-6 py-24 text-center">
-          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }}>
+        <div className="relative w-full max-w-7xl mx-auto px-6 py-24 text-left">
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-2xl">
             <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-ember text-xs uppercase tracking-[0.3em] mb-8">
               <Sparkles className="w-3.5 h-3.5" /> Indore's Trusted Fire Safety Partner
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="font-display uppercase leading-[0.85] tracking-tight text-7xl sm:text-8xl md:text-[10rem] lg:text-[13rem]"
+              className="font-display uppercase leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl"
               style={{ textShadow: "0 6px 40px rgba(0,0,0,0.6)" }}
             >
               <span className="block text-white">Vyraaz</span>
@@ -157,19 +157,18 @@ function Home() {
               </span>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="mt-8 flex items-center justify-center gap-4">
+            <motion.div variants={fadeUp} className="mt-6 flex items-center gap-4">
               <span className="h-px w-12 bg-fire/60" />
               <span className="text-sm md:text-base uppercase tracking-[0.4em] text-white/90">
                 Safeguarding Tomorrow, Today
               </span>
-              <span className="h-px w-12 bg-fire/60" />
             </motion.div>
 
-            <motion.p variants={fadeUp} className="mt-8 mx-auto max-w-2xl text-base md:text-lg text-white/85 leading-relaxed" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
+            <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base md:text-lg text-white/85 leading-relaxed" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
               Premium fire fighting equipment, installation, refilling and AMC services across Indore and Madhya Pradesh.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="mt-12 flex flex-wrap justify-center gap-4">
+            <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
               <a href="#products">
                 <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
                   Explore Products
