@@ -137,8 +137,7 @@ function Home() {
             preload="auto"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/40 to-background/85" />
-          <div className="absolute inset-0 bg-background/30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-transparent to-background/70" />
         </motion.div>
 
         <div className="relative w-full max-w-6xl mx-auto px-6 py-24 text-center">
@@ -152,7 +151,7 @@ function Home() {
               className="font-display uppercase leading-[0.85] tracking-tight text-7xl sm:text-8xl md:text-[10rem] lg:text-[13rem]"
               style={{ textShadow: "0 6px 40px rgba(0,0,0,0.6)" }}
             >
-              <span className="block text-foreground">Vyraaz</span>
+              <span className="block text-white">Vyraaz</span>
               <span className="block text-fire" style={{ textShadow: "0 0 60px rgba(239,68,68,0.55)" }}>
                 Firetech
               </span>
@@ -160,13 +159,13 @@ function Home() {
 
             <motion.div variants={fadeUp} className="mt-8 flex items-center justify-center gap-4">
               <span className="h-px w-12 bg-fire/60" />
-              <span className="text-sm md:text-base uppercase tracking-[0.4em] text-foreground/85">
+              <span className="text-sm md:text-base uppercase tracking-[0.4em] text-white/90">
                 Safeguarding Tomorrow, Today
               </span>
               <span className="h-px w-12 bg-fire/60" />
             </motion.div>
 
-            <motion.p variants={fadeUp} className="mt-8 mx-auto max-w-2xl text-base md:text-lg text-foreground/80 leading-relaxed">
+            <motion.p variants={fadeUp} className="mt-8 mx-auto max-w-2xl text-base md:text-lg text-white/85 leading-relaxed" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
               Premium fire fighting equipment, installation, refilling and AMC services across Indore and Madhya Pradesh.
             </motion.p>
 
