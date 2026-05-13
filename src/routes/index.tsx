@@ -23,6 +23,7 @@ import p6 from "@/assets/projects/project-6.jpeg";
 import p7 from "@/assets/projects/project-7.jpeg";
 import p8 from "@/assets/projects/project-8.jpeg";
 import p9 from "@/assets/projects/project-9.jpeg";
+import p10 from "@/assets/projects/project-10.jpeg";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -278,6 +279,21 @@ function Home() {
                 <div className={`relative mt-1 md:mt-2 h-0.5 w-0 group-hover:w-8 transition-all duration-500 ${i % 2 === 0 ? "bg-white" : "bg-fire"}`} />
               </motion.div>
             ))}
+            {/* Mobile-only extra project */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+              className="md:hidden relative group overflow-hidden rounded-xl border border-border aspect-square"
+            >
+              <img src={p10} alt="Vyraaz Firetech fire extinguisher installation" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition" />
+              <div className="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-ember">Project / 10</div>
+                <div className="font-display text-xl uppercase">Fire Extinguisher</div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
