@@ -143,30 +143,39 @@ function Home() {
 
         <div className="relative w-full max-w-7xl mx-auto px-6 py-24 text-left">
           <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-2xl">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand/40 bg-brand/10 text-ember text-xs uppercase tracking-[0.3em] mb-8">
-              <Sparkles className="w-3.5 h-3.5" /> Indore's Trusted Fire Safety Partner
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fire/50 bg-fire/10 backdrop-blur-sm text-white text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 shadow-fire">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
+              </span>
+              Indore's Trusted Fire Safety Partner
             </motion.div>
 
             <motion.h1
               variants={fadeUp}
-              className="font-display uppercase leading-[0.9] tracking-tight text-5xl sm:text-6xl md:text-7xl"
-              style={{ textShadow: "0 6px 40px rgba(0,0,0,0.6)" }}
+              className="font-display uppercase leading-[0.85] tracking-tight text-6xl sm:text-7xl md:text-8xl"
+              style={{ textShadow: "0 8px 50px rgba(0,0,0,0.8)" }}
             >
-              <span className="block text-white">Vyraaz</span>
-              <span className="block text-fire" style={{ textShadow: "0 0 60px rgba(239,68,68,0.55)" }}>
+              <span className="block bg-gradient-to-br from-white via-white to-white/60 bg-clip-text text-transparent">
+                Vyraaz
+              </span>
+              <span
+                className="block bg-gradient-to-br from-fire via-ember to-fire bg-clip-text text-transparent"
+                style={{ filter: "drop-shadow(0 0 30px rgba(239,68,68,0.5))" }}
+              >
                 Firetech
               </span>
             </motion.h1>
 
-            <motion.div variants={fadeUp} className="mt-6 flex items-center gap-4">
-              <span className="h-px w-12 bg-fire/60" />
-              <span className="text-sm md:text-base uppercase tracking-[0.4em] text-white/90">
+            <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
+              <span className="h-[2px] w-14 bg-gradient-to-r from-fire to-transparent" />
+              <span className="text-xs md:text-sm uppercase tracking-[0.45em] text-white/95 font-medium">
                 Safeguarding Tomorrow, Today
               </span>
             </motion.div>
 
-            <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base md:text-lg text-white/85 leading-relaxed" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.6)" }}>
-              Premium fire fighting equipment, installation, refilling and AMC services across Indore and Madhya Pradesh.
+            <motion.p variants={fadeUp} className="mt-6 max-w-xl text-base md:text-lg text-white/80 leading-relaxed font-light" style={{ textShadow: "0 2px 14px rgba(0,0,0,0.7)" }}>
+              Premium fire fighting equipment, installation, refilling and AMC services across <span className="text-white font-medium">Indore</span> and <span className="text-white font-medium">Madhya Pradesh</span>.
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
