@@ -329,21 +329,6 @@ function Home() {
                 </div>
               </motion.article>
             ))}
-            {/* Mobile-only extra project */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5 }}
-              className="md:hidden relative group overflow-hidden rounded-xl border border-border aspect-square"
-            >
-              <img src={p10} alt="Vyraaz Firetech fire extinguisher installation" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition" />
-              <div className="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition">
-                <div className="text-[10px] uppercase tracking-[0.3em] text-ember">Project / 10</div>
-                <div className="font-display text-xl uppercase">Fire Extinguisher</div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -379,6 +364,21 @@ function Home() {
                 </div>
               </motion.div>
             ))}
+            {/* Mobile-only extra project */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5 }}
+              className="md:hidden relative group overflow-hidden rounded-xl border border-border aspect-square"
+            >
+              <img src={p10} alt="Vyraaz Firetech fire extinguisher installation" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-60 group-hover:opacity-90 transition" />
+              <div className="absolute bottom-0 left-0 p-5 translate-y-2 group-hover:translate-y-0 transition">
+                <div className="text-[10px] uppercase tracking-[0.3em] text-ember">Project / 10</div>
+                <div className="font-display text-xl uppercase">Fire Extinguisher</div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Counters */}
