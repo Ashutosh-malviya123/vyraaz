@@ -165,25 +165,10 @@ function Home() {
       </header>
 
       {/* HERO */}
-      <section id="top" ref={heroRef} className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0 bg-black">
-          <video
-            src="/hero-bg.mp4"
-            poster="/hero-poster.jpg"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/45" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent" />
-        </motion.div>
-
-        <div className="relative w-full max-w-7xl mx-auto px-6 py-24 text-left">
-          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-2xl">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fire/50 bg-fire/10 backdrop-blur-sm text-white text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 shadow-fire">
+      <section id="top" ref={heroRef} className="relative pt-28 pb-16 overflow-hidden bg-background">
+        <div className="relative w-full max-w-7xl mx-auto px-6 text-left">
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-3xl">
+            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fire/50 bg-fire/10 backdrop-blur-sm text-foreground text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 shadow-fire">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
@@ -194,9 +179,8 @@ function Home() {
             <motion.h1
               variants={fadeUp}
               className="font-display uppercase leading-[0.85] tracking-tight text-6xl sm:text-7xl md:text-8xl"
-              style={{ textShadow: "0 8px 50px rgba(0,0,0,0.8)" }}
             >
-              <span className="block bg-gradient-to-br from-white via-white to-white/60 bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-br from-foreground via-foreground to-foreground/60 bg-clip-text text-transparent">
                 Vyraaz
               </span>
               <span
@@ -229,6 +213,24 @@ function Home() {
                 </div>
               ))}
             </motion.div>
+          </motion.div>
+
+          <motion.div
+            ref={heroRef}
+            style={{ y: heroY, opacity: heroOpacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-16 relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
+          >
+            <video
+              src="/hero-bg.mp4"
+              poster="/hero-poster.jpg"
+              controls
+              preload="metadata"
+              playsInline
+              className="w-full h-auto block"
+            />
           </motion.div>
         </div>
       </section>
