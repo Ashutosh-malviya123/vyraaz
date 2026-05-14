@@ -168,14 +168,6 @@ function Home() {
       <section id="top" ref={heroRef} className="relative pt-28 pb-16 overflow-hidden bg-background">
         <div className="relative w-full max-w-7xl mx-auto px-6 text-left">
           <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-3xl">
-            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fire/50 bg-fire/10 backdrop-blur-sm text-foreground text-[10px] md:text-xs uppercase tracking-[0.3em] mb-8 shadow-fire">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
-              </span>
-              Indore's Trusted Fire Safety Partner
-            </motion.div>
-
             <motion.h1
               variants={fadeUp}
               className="font-display uppercase leading-[0.85] tracking-tight text-6xl sm:text-7xl md:text-8xl"
@@ -190,7 +182,26 @@ function Home() {
                 Firetech
               </span>
             </motion.h1>
+          </motion.div>
 
+          <motion.div
+            style={{ y: heroY, opacity: heroOpacity }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="mt-10 relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
+          >
+            <video
+              src="/hero-bg.mp4"
+              poster="/hero-poster.jpg"
+              controls
+              preload="metadata"
+              playsInline
+              className="w-full h-auto block"
+            />
+          </motion.div>
+
+          <motion.div initial="hidden" animate="show" variants={{ show: { transition: { staggerChildren: 0.15 } } }} className="max-w-3xl">
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
               <a href="#products">
                 <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
@@ -205,6 +216,14 @@ function Home() {
               </a>
             </motion.div>
 
+            <motion.div variants={fadeUp} className="mt-10 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-fire/50 bg-fire/10 backdrop-blur-sm text-foreground text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-fire">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
+              </span>
+              Indore's Trusted Fire Safety Partner
+            </motion.div>
+
             <motion.div variants={fadeUp} className="mt-14 grid grid-cols-3 max-w-md gap-6">
               {[["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
                 <div key={l}>
@@ -213,24 +232,6 @@ function Home() {
                 </div>
               ))}
             </motion.div>
-          </motion.div>
-
-          <motion.div
-            ref={heroRef}
-            style={{ y: heroY, opacity: heroOpacity }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-16 relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
-          >
-            <video
-              src="/hero-bg.mp4"
-              poster="/hero-poster.jpg"
-              controls
-              preload="metadata"
-              playsInline
-              className="w-full h-auto block"
-            />
           </motion.div>
         </div>
       </section>
