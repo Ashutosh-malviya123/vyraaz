@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
   Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin, Menu, X,
-  CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
+  CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles, ChevronLeft, ChevronRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LANGUAGE_EVENT, getStoredLanguage, type LanguageCode } from "@/lib/language";
