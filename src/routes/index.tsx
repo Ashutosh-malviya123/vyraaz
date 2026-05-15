@@ -286,7 +286,7 @@ function Home() {
             className="mt-10 relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
           >
             <video
-              src="/videos/bg-real-2.mp4"
+              src="/videos/bg-real-3.mp4"
               poster="/hero-poster.jpg"
               controls
               preload="metadata"
