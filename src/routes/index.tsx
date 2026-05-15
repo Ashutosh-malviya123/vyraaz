@@ -785,7 +785,7 @@ function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
+            className="relative overflow-hidden bg-black"
           >
             <video
               src="/videos/bg-real-3.mp4"
