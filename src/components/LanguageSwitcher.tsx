@@ -1,0 +1,77 @@
+import { Globe } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+
+const LANGUAGES = [
+  { code: "en", label: "English" },
+  { code: "hi", label: "हिन्दी" },
+  { code: "mr", label: "मराठी" },
+  { code: "ta", label: "தமிழ்" },
+  { code: "kn", label: "ಕನ್ನಡ" },
+  { code: "te", label: "తెలుగు" },
+  { code: "gu", label: "ગુજરાતી" },
+  { code: "bn", label: "বাংলা" },
+];
+
+const STORAGE_KEY = "vyraaz-language";
+
+export default function LanguageSwitcher() {
+  const [open, setOpen] = useState(false);
+  const [current, setCurrent] = useState("en");
+
+  const currentLabel = useMemo(
+    () => LANGUAGES.find((language) => language.code === current)?.label ?? "English",
+    [current]
+  );
+
+  useEffect(() => {
+    const saved = window.localStorage.getItem(STORAGE_KEY);
+    if (saved && LANGUAGES.some((language) => language.code === saved)) {
+      setCurrent(saved);
+      document.documentElement.lang = saved;
+      return;
+    }
+
+    document.documentElement.lang = "en";
+  }, []);
+
+  const selectLanguage = (code: string) => {
+    setCurrent(code);
+    setOpen(false);
+    document.documentElement.lang = code;
+    window.localStorage.setItem(STORAGE_KEY, code);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen((value) => !value)}
+        aria-label="Change language"
+        className="flex items-center gap-2 h-10 px-3 rounded-lg border border-border bg-card hover:bg-muted transition text-sm font-medium text-foreground"
+      >
+        <Globe className="w-4 h-4" />
+        <span className="hidden sm:inline">{currentLabel}</span>
+      </button>
+
+      {open && (
+        <>
+          <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+          <div className="absolute right-0 mt-2 w-44 rounded-lg border border-border bg-card shadow-xl z-50 overflow-hidden">
+            {LANGUAGES.map((language) => (
+              <button
+                key={language.code}
+                onClick={() => selectLanguage(language.code)}
+                className={`w-full text-left px-3 py-2 text-sm hover:bg-muted transition ${
+                  current === language.code
+                    ? "bg-muted text-fire font-semibold"
+                    : "text-foreground"
+                }`}
+              >
+                {language.label}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
