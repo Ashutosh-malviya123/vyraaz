@@ -6,6 +6,7 @@ import {
   CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { LANGUAGE_EVENT, getStoredLanguage, type LanguageCode } from "@/lib/language";
 
 import logo from "@/assets/vyraaz-logo.png";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -64,6 +65,80 @@ const fadeUp: Variants = {
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] } },
 };
 
+const homeLabels: Record<LanguageCode, {
+  nav: string[];
+  ctaExplore: string;
+  ctaQuote: string;
+  trustBadge: string;
+  marquee: string[];
+  stats: [string, string][];
+}> = {
+  en: {
+    nav: ["Home", "About", "Products", "Projects", "Contact"],
+    ctaExplore: "Explore Products",
+    ctaQuote: "Request a Quote",
+    trustBadge: "Indore's Trusted Fire Safety Partner",
+    marquee: ["Fire Alarm System", "Fire Fighting Pumps", "Fire Hydrant System", "Fire Extinguishers", "Sprinkler Systems"],
+    stats: [["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]],
+  },
+  hi: {
+    nav: ["होम", "हमारे बारे में", "उत्पाद", "प्रोजेक्ट्स", "संपर्क"],
+    ctaExplore: "उत्पाद देखें",
+    ctaQuote: "कोटेशन लें",
+    trustBadge: "इंदौर का भरोसेमंद फायर सेफ्टी पार्टनर",
+    marquee: ["फायर अलार्म सिस्टम", "फायर फाइटिंग पंप", "फायर हाइड्रेंट सिस्टम", "फायर एक्सटिंग्विशर", "स्प्रिंकलर सिस्टम"],
+    stats: [["10+", "साल"], ["100+", "प्रोजेक्ट्स"], ["24/7", "सपोर्ट"]],
+  },
+  mr: {
+    nav: ["मुख्यपृष्ठ", "आमच्याबद्दल", "उत्पादने", "प्रकल्प", "संपर्क"],
+    ctaExplore: "उत्पादने पाहा",
+    ctaQuote: "कोटेशन मागवा",
+    trustBadge: "इंदौरमधील विश्वासार्ह फायर सेफ्टी पार्टनर",
+    marquee: ["फायर अलार्म सिस्टम", "फायर फाइटिंग पंप", "फायर हायड्रंट सिस्टम", "फायर एक्स्टिंग्विशर", "स्प्रिंकलर सिस्टम"],
+    stats: [["10+", "वर्षे"], ["100+", "प्रकल्प"], ["24/7", "सपोर्ट"]],
+  },
+  ta: {
+    nav: ["முகப்பு", "எங்களை பற்றி", "தயாரிப்புகள்", "திட்டங்கள்", "தொடர்பு"],
+    ctaExplore: "தயாரிப்புகளை பார்க்க",
+    ctaQuote: "விலை கேட்டறிய",
+    trustBadge: "இந்தூரின் நம்பகமான தீ பாதுகாப்பு கூட்டாளி",
+    marquee: ["தீ அலாரம் அமைப்பு", "தீ அணைப்பு பம்புகள்", "தீ ஹைட்ரண்ட் அமைப்பு", "தீ அணைப்பான்", "ஸ்பிரிங்க்ளர் அமைப்பு"],
+    stats: [["10+", "ஆண்டுகள்"], ["100+", "திட்டங்கள்"], ["24/7", "ஆதரம்"]],
+  },
+  kn: {
+    nav: ["ಮುಖಪುಟ", "ನಮ್ಮ ಬಗ್ಗೆ", "ಉತ್ಪನ್ನಗಳು", "ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು", "ಸಂಪರ್ಕ"],
+    ctaExplore: "ಉತ್ಪನ್ನಗಳನ್ನು ನೋಡಿ",
+    ctaQuote: "ದರ ಕೇಳಿ",
+    trustBadge: "ಇಂದೋರ್‌ನ ವಿಶ್ವಾಸಾರ್ಹ ಫೈರ್ ಸೇಫ್ಟಿ ಪಾಲುದಾರ",
+    marquee: ["ಫೈರ್ ಅಲಾರ್ಮ್ ಸಿಸ್ಟಂ", "ಫೈರ್ ಫೈಟಿಂಗ್ ಪಂಪ್ಸ್", "ಫೈರ್ ಹೈಡ್ರಂಟ್ ಸಿಸ್ಟಂ", "ಫೈರ್ ಎಕ್ಸ್ಟಿಂಗ್ವಿಷರ್", "ಸ್ಪ್ರಿಂಕ್ಲರ್ ಸಿಸ್ಟಂ"],
+    stats: [["10+", "ವರ್ಷಗಳು"], ["100+", "ಪ್ರಾಜೆಕ್ಟ್‌ಗಳು"], ["24/7", "ಸಹಾಯ"]],
+  },
+  te: {
+    nav: ["హోమ్", "మా గురించి", "ఉత్పత్తులు", "ప్రాజెక్టులు", "సంప్రదించండి"],
+    ctaExplore: "ఉత్పత్తులు చూడండి",
+    ctaQuote: "కొటేషన్ పొందండి",
+    trustBadge: "ఇందోర్‌లో నమ్మకమైన ఫైర్ సేఫ్టీ భాగస్వామి",
+    marquee: ["ఫైర్ అలారం సిస్టమ్", "ఫైర్ ఫైటింగ్ పంపులు", "ఫైర్ హైడ్రెంట్ సిస్టమ్", "ఫైర్ ఎక్స్‌టింగ్విషర్", "స్ప్రింక్లర్ సిస్టమ్"],
+    stats: [["10+", "సంవత్సరాలు"], ["100+", "ప్రాజెక్టులు"], ["24/7", "సపోర్ట్"]],
+  },
+  gu: {
+    nav: ["હોમ", "અમારા વિશે", "ઉત્પાદનો", "પ્રોજેક્ટ્સ", "સંપર્ક"],
+    ctaExplore: "ઉત્પાદનો જુઓ",
+    ctaQuote: "ક્વોટેશન મેળવો",
+    trustBadge: "ઇન્દોરનો વિશ્વસનીય ફાયર સેફ્ટી ભાગીદાર",
+    marquee: ["ફાયર એલાર્મ સિસ્ટમ", "ફાયર ફાઇટિંગ પમ્પ્સ", "ફાયર હાઇડ્રન્ટ સિસ્ટમ", "ફાયર એક્સ્ટિંગ્વિશર", "સ્પ્રિંકલર સિસ્ટમ"],
+    stats: [["10+", "વર્ષ"], ["100+", "પ્રોજેક્ટ્સ"], ["24/7", "સપોર્ટ"]],
+  },
+  bn: {
+    nav: ["হোম", "আমাদের সম্পর্কে", "পণ্য", "প্রজেক্ট", "যোগাযোগ"],
+    ctaExplore: "পণ্য দেখুন",
+    ctaQuote: "কোটেশন নিন",
+    trustBadge: "ইন্দোরের বিশ্বস্ত ফায়ার সেফটি পার্টনার",
+    marquee: ["ফায়ার অ্যালার্ম সিস্টেম", "ফায়ার ফাইটিং পাম্প", "ফায়ার হাইড্র্যান্ট সিস্টেম", "ফায়ার এক্সটিংগুইশার", "স্প্রিংকলার সিস্টেম"],
+    stats: [["10+", "বছর"], ["100+", "প্রজেক্ট"], ["24/7", "সাপোর্ট"]],
+  },
+};
+
 function FireDivider() {
   return (
     <div aria-hidden className="relative w-full py-10 md:py-16 overflow-hidden">
@@ -107,9 +182,28 @@ function FireDivider() {
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<LanguageCode>("en");
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
+
+  useState(() => {
+    if (typeof window !== "undefined") {
+      setLanguage(getStoredLanguage());
+    }
+  });
+
+  useRef(() => {
+    if (typeof window === "undefined") return;
+    const syncLanguage = (event: Event) => {
+      const code = (event as CustomEvent<LanguageCode>).detail;
+      if (code) setLanguage(code);
+    };
+    window.addEventListener(LANGUAGE_EVENT, syncLanguage);
+    return () => window.removeEventListener(LANGUAGE_EVENT, syncLanguage);
+  });
+
+  const copy = homeLabels[language] ?? homeLabels.en;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
