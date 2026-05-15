@@ -111,6 +111,8 @@
   }
   .marquee-track { animation: marquee 40s linear infinite; }
   .marquee-track-fast { animation: marquee 18s linear infinite; }
+  .marquee-track-reverse { animation: marquee 45s linear infinite reverse; }
+  .marquee-track-slow { animation: marquee 60s linear infinite; }
   @keyframes marquee {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
