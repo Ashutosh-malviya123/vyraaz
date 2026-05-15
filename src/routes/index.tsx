@@ -777,6 +777,9 @@ function Home() {
         </div>
       </section>
 
+      {/* CLIENT REVIEWS */}
+      <ClientReviews />
+
       {/* PRE-FOOTER VIDEO */}
       <section className="relative bg-background py-20">
         <div className="max-w-5xl mx-auto px-6">
