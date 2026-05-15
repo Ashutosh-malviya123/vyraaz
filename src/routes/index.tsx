@@ -31,6 +31,19 @@ import clientDavv from "@/assets/clients/davv.png";
 import clientHp from "@/assets/clients/hp.png";
 import clientNexa from "@/assets/clients/nexa.png";
 
+const reviews = [
+  { name: "Rohit Sharma", role: "Facility Manager, Indore", rating: 5, text: "Vyraaz installed our entire hydrant and alarm system on time. Very professional team and great after-sales support." },
+  { name: "Priya Verma", role: "Operations Lead, Bhopal", rating: 5, text: "Quick refilling service and honest pricing. Their AMC plan keeps our office completely worry-free." },
+  { name: "Anand Patel", role: "Plant Head, Pithampur", rating: 5, text: "Highly skilled engineers. They demonstrated every extinguisher to our staff. Truly a safety-first company." },
+  { name: "Kavita Joshi", role: "School Principal, Indore", rating: 5, text: "Trained our staff and students with a live demo. Equipment is top quality and certified." },
+  { name: "Sandeep Mehra", role: "Hotel Owner, Ujjain", rating: 5, text: "Smooth installation across 4 floors. Documentation for fire NOC was handled end-to-end. Recommended!" },
+  { name: "Neha Gupta", role: "Hospital Admin, Indore", rating: 5, text: "Reliable AMC, prompt response and genuine spares. Vyraaz is now our default fire safety partner." },
+  { name: "Vikram Singh", role: "Builder, Dewas", rating: 5, text: "Best pricing in MP for fire pumps and sprinklers. Delivered ahead of schedule." },
+  { name: "Aarti Nair", role: "Restaurant Owner, Indore", rating: 4, text: "Friendly team, fast quotation, and the kitchen extinguisher setup is perfect. Will hire again." },
+  { name: "Manish Tiwari", role: "Warehouse Manager, Mhow", rating: 5, text: "Saved us during an audit — their team mobilised within hours. Quality work and clean cabling." },
+  { name: "Sneha Iyer", role: "HR, IT Park Indore", rating: 5, text: "Professional drills, clear training material and certified extinguishers. Our team feels much safer." },
+];
+
 export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
