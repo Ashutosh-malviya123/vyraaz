@@ -39,7 +39,7 @@ export default function LanguageSwitcher() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative" data-no-auto-translate>
       <button
         onClick={() => setOpen((value) => !value)}
         aria-label="Change language"
