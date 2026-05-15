@@ -24,7 +24,6 @@ export default function LanguageSwitcher() {
   const [current, setCurrent] = useState("en");
   const [isReady, setIsReady] = useState(false);
   const initialized = useRef(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
 
   const languageMap = useMemo(
     () => Object.fromEntries(LANGUAGES.map((language) => [language.code, language.label])),
@@ -120,16 +119,20 @@ export default function LanguageSwitcher() {
 
   return (
     <>
-      <div id="google_translate_element" style={{ display: "none" }} />
+      <div
+        id="google_translate_element"
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-[9999px] top-0 opacity-0"
+      />
       <style>{`
         .goog-te-banner-frame, .skiptranslate iframe { display: none !important; }
         body { top: 0 !important; position: static !important; }
         .goog-tooltip, .goog-tooltip:hover { display: none !important; }
         .goog-text-highlight { background: transparent !important; box-shadow: none !important; }
-        #google_translate_element { display: none !important; }
+        #google_translate_element { position: absolute !important; left: -9999px !important; top: 0 !important; opacity: 0 !important; pointer-events: none !important; }
       `}</style>
 
-      <div ref={wrapperRef} className="relative">
+      <div className="relative">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Change language"
