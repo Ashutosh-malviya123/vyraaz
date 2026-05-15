@@ -208,8 +208,8 @@ function ClientReviews() {
       </div>
 
       <div className="space-y-5 md:space-y-6">
-        <ReviewMarquee items={row1} className="marquee-track-slow" />
-        <ReviewMarquee items={row2} className="marquee-track-reverse" />
+        <ReviewMarquee items={row1} />
+        <ReviewMarquee items={row2} reverse />
       </div>
     </section>
   );
