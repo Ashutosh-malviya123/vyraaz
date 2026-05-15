@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Flame, Shield, Bell, Droplets, Wrench, Siren, PhoneCall, Mail, MapPin, Menu, X,
   CheckCircle2, ArrowRight, Award, Users, Briefcase, Clock, Sparkles,
@@ -187,23 +187,22 @@ function Home() {
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.3]);
 
-  useState(() => {
-    if (typeof window !== "undefined") {
-      setLanguage(getStoredLanguage());
-    }
-  });
+  useEffect(() => {
+    setLanguage(getStoredLanguage());
 
-  useRef(() => {
-    if (typeof window === "undefined") return;
     const syncLanguage = (event: Event) => {
       const code = (event as CustomEvent<LanguageCode>).detail;
-      if (code) setLanguage(code);
+      if (code) {
+        setLanguage(code);
+      }
     };
+
     window.addEventListener(LANGUAGE_EVENT, syncLanguage);
     return () => window.removeEventListener(LANGUAGE_EVENT, syncLanguage);
-  });
+  }, []);
 
   const copy = homeLabels[language] ?? homeLabels.en;
+  const navTargets = ["top", "about", "products", "projects", "contact"] as const;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
