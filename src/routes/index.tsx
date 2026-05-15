@@ -682,6 +682,28 @@ function Home() {
         </div>
       </section>
 
+      {/* PRE-FOOTER VIDEO */}
+      <section className="relative bg-background py-20">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="relative rounded-2xl overflow-hidden border border-border shadow-2xl bg-black"
+          >
+            <video
+              src="/hero-bg.mp4"
+              poster="/hero-poster.jpg"
+              controls
+              preload="metadata"
+              playsInline
+              className="w-full h-auto block"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* FOOTER */}
       <footer className="relative border-t border-border bg-card/40">
         <div className="max-w-7xl mx-auto px-6 py-16 grid gap-12 md:grid-cols-12">
