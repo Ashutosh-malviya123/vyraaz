@@ -1008,7 +1008,7 @@ function Home() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
-                <span>Indore, Madhya Pradesh, India</span>
+                <span>46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa, Indore, Madhya Pradesh 452001</span>
               </li>
               <li className="flex gap-3">
                 <PhoneCall className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
