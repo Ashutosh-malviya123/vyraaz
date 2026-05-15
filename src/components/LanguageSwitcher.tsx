@@ -1,18 +1,11 @@
 import { Globe } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-
-const LANGUAGES = [
-  { code: "en", label: "English" },
-  { code: "hi", label: "हिन्दी" },
-  { code: "mr", label: "मराठी" },
-  { code: "ta", label: "தமிழ்" },
-  { code: "kn", label: "ಕನ್ನಡ" },
-  { code: "te", label: "తెలుగు" },
-  { code: "gu", label: "ગુજરાતી" },
-  { code: "bn", label: "বাংলা" },
-];
-
-const STORAGE_KEY = "vyraaz-language";
+import {
+  LANGUAGES,
+  LANGUAGE_EVENT,
+  getStoredLanguage,
+  setStoredLanguage,
+} from "@/lib/language";
 
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
@@ -24,21 +17,25 @@ export default function LanguageSwitcher() {
   );
 
   useEffect(() => {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved && LANGUAGES.some((language) => language.code === saved)) {
-      setCurrent(saved);
-      document.documentElement.lang = saved;
-      return;
-    }
+    const saved = getStoredLanguage();
+    setCurrent(saved);
+    document.documentElement.lang = saved;
 
-    document.documentElement.lang = "en";
+    const syncLanguage = (event: Event) => {
+      const code = (event as CustomEvent<string>).detail;
+      if (code) {
+        setCurrent(code);
+      }
+    };
+
+    window.addEventListener(LANGUAGE_EVENT, syncLanguage);
+    return () => window.removeEventListener(LANGUAGE_EVENT, syncLanguage);
   }, []);
 
   const selectLanguage = (code: string) => {
     setCurrent(code);
     setOpen(false);
-    document.documentElement.lang = code;
-    window.localStorage.setItem(STORAGE_KEY, code);
+    setStoredLanguage(code as (typeof LANGUAGES)[number]["code"]);
   };
 
   return (
