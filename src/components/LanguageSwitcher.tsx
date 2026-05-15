@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 
 const LANGUAGES = [
@@ -22,7 +22,14 @@ declare global {
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("en");
+  const [isReady, setIsReady] = useState(false);
   const initialized = useRef(false);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  const languageMap = useMemo(
+    () => Object.fromEntries(LANGUAGES.map((language) => [language.code, language.label])),
+    []
+  );
 
   useEffect(() => {
     if (initialized.current) return;
@@ -40,6 +47,19 @@ export default function LanguageSwitcher() {
         },
         "google_translate_element"
       );
+
+      const waitForSelect = (attempt = 0) => {
+        const select = document.querySelector<HTMLSelectElement>("select.goog-te-combo");
+        if (select) {
+          setIsReady(true);
+          return;
+        }
+        if (attempt < 40) {
+          window.setTimeout(() => waitForSelect(attempt + 1), 200);
+        }
+      };
+
+      waitForSelect();
     };
 
     if (!document.getElementById("google-translate-script")) {
@@ -52,6 +72,28 @@ export default function LanguageSwitcher() {
     }
   }, []);
 
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const activeBanner = document.querySelector("iframe.goog-te-banner-frame");
+      const translatedText = document.querySelector("font font");
+      if (activeBanner || translatedText) {
+        const combo = document.querySelector<HTMLSelectElement>("select.goog-te-combo");
+        const nextCode = combo?.value || current;
+        if (languageMap[nextCode]) {
+          setCurrent(nextCode);
+        }
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
+
+    return () => observer.disconnect();
+  }, [current, languageMap]);
+
   const triggerTranslate = (code: string) => {
     const tryFire = (attempt = 0) => {
       const select = document.querySelector<HTMLSelectElement>(
@@ -59,7 +101,7 @@ export default function LanguageSwitcher() {
       );
       if (select) {
         select.value = code;
-        select.dispatchEvent(new Event("change"));
+        select.dispatchEvent(new Event("change", { bubbles: true }));
         return;
       }
       if (attempt < 40) setTimeout(() => tryFire(attempt + 1), 200);
@@ -68,21 +110,8 @@ export default function LanguageSwitcher() {
   };
 
   const select = (code: string) => {
-    setCurrent(code);
     setOpen(false);
-    if (code === "en") {
-      // Restoring to original requires removing googtrans cookies and reload
-      const host = window.location.hostname;
-      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
-      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${host};`;
-      const parts = host.split(".");
-      if (parts.length > 1) {
-        const domain = "." + parts.slice(-2).join(".");
-        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${domain};`;
-      }
-      window.location.reload();
-      return;
-    }
+    setCurrent(code);
     triggerTranslate(code);
   };
 
@@ -100,11 +129,12 @@ export default function LanguageSwitcher() {
         #google_translate_element { display: none !important; }
       `}</style>
 
-      <div className="relative">
+      <div ref={wrapperRef} className="relative">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label="Change language"
-          className="flex items-center gap-2 h-10 px-3 rounded-lg border border-border bg-card hover:bg-muted transition text-sm font-medium text-foreground notranslate"
+          className="flex items-center gap-2 h-10 px-3 rounded-lg border border-border bg-card hover:bg-muted transition text-sm font-medium text-foreground notranslate disabled:opacity-60 disabled:cursor-not-allowed"
+          disabled={!isReady}
         >
           <Globe className="w-4 h-4" />
           <span className="hidden sm:inline">{currentLabel}</span>
