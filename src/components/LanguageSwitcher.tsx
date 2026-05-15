@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Globe } from "lucide-react";
 
 const LANGUAGES = [
@@ -19,33 +19,14 @@ declare global {
   }
 }
 
-function setLangCookie(lang: string) {
-  const value = lang === "en" ? "/auto/en" : `/auto/${lang}`;
-  // root path
-  document.cookie = `googtrans=${value};path=/`;
-  // also for parent host (in case of subdomain)
-  const host = window.location.hostname;
-  const parts = host.split(".");
-  if (parts.length > 1) {
-    const domain = "." + parts.slice(-2).join(".");
-    document.cookie = `googtrans=${value};path=/;domain=${domain}`;
-    document.cookie = `googtrans=${value};path=/;domain=${host}`;
-  }
-}
-
-function getCurrentLang(): string {
-  if (typeof document === "undefined") return "en";
-  const m = document.cookie.match(/googtrans=\/auto\/(\w+)/);
-  return m ? m[1] : "en";
-}
-
 export default function LanguageSwitcher() {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState("en");
+  const initialized = useRef(false);
 
   useEffect(() => {
-    setCurrent(getCurrentLang());
-    if (document.getElementById("google-translate-script")) return;
+    if (initialized.current) return;
+    initialized.current = true;
 
     window.googleTranslateElementInit = () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -54,35 +35,69 @@ export default function LanguageSwitcher() {
           pageLanguage: "en",
           includedLanguages: LANGUAGES.map((l) => l.code).join(","),
           autoDisplay: false,
+          layout: (window.google as any).translate.TranslateElement.InlineLayout
+            .SIMPLE,
         },
         "google_translate_element"
       );
     };
 
-    const s = document.createElement("script");
-    s.id = "google-translate-script";
-    s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-    s.async = true;
-    document.body.appendChild(s);
+    if (!document.getElementById("google-translate-script")) {
+      const s = document.createElement("script");
+      s.id = "google-translate-script";
+      s.src =
+        "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      s.async = true;
+      document.body.appendChild(s);
+    }
   }, []);
 
-  const select = (code: string) => {
-    setLangCookie(code);
-    setCurrent(code);
-    setOpen(false);
-    window.location.reload();
+  const triggerTranslate = (code: string) => {
+    const tryFire = (attempt = 0) => {
+      const select = document.querySelector<HTMLSelectElement>(
+        "select.goog-te-combo"
+      );
+      if (select) {
+        select.value = code;
+        select.dispatchEvent(new Event("change"));
+        return;
+      }
+      if (attempt < 40) setTimeout(() => tryFire(attempt + 1), 200);
+    };
+    tryFire();
   };
 
-  const currentLabel = LANGUAGES.find((l) => l.code === current)?.label ?? "English";
+  const select = (code: string) => {
+    setCurrent(code);
+    setOpen(false);
+    if (code === "en") {
+      // Restoring to original requires removing googtrans cookies and reload
+      const host = window.location.hostname;
+      document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;";
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${host};`;
+      const parts = host.split(".");
+      if (parts.length > 1) {
+        const domain = "." + parts.slice(-2).join(".");
+        document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=${domain};`;
+      }
+      window.location.reload();
+      return;
+    }
+    triggerTranslate(code);
+  };
+
+  const currentLabel =
+    LANGUAGES.find((l) => l.code === current)?.label ?? "English";
 
   return (
     <>
       <div id="google_translate_element" style={{ display: "none" }} />
       <style>{`
-        .goog-te-banner-frame, .skiptranslate { display: none !important; }
-        body { top: 0 !important; }
+        .goog-te-banner-frame, .skiptranslate iframe { display: none !important; }
+        body { top: 0 !important; position: static !important; }
         .goog-tooltip, .goog-tooltip:hover { display: none !important; }
         .goog-text-highlight { background: transparent !important; box-shadow: none !important; }
+        #google_translate_element { display: none !important; }
       `}</style>
 
       <div className="relative">
@@ -96,14 +111,19 @@ export default function LanguageSwitcher() {
         </button>
         {open && (
           <>
-            <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
+            <div
+              className="fixed inset-0 z-40"
+              onClick={() => setOpen(false)}
+            />
             <div className="absolute right-0 mt-2 w-44 rounded-lg border border-border bg-card shadow-xl z-50 overflow-hidden notranslate">
               {LANGUAGES.map((l) => (
                 <button
                   key={l.code}
                   onClick={() => select(l.code)}
                   className={`w-full text-left px-3 py-2 text-sm hover:bg-muted transition ${
-                    current === l.code ? "bg-muted text-fire font-semibold" : "text-foreground"
+                    current === l.code
+                      ? "bg-muted text-fire font-semibold"
+                      : "text-foreground"
                   }`}
                 >
                   {l.label}
