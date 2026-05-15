@@ -213,9 +213,9 @@ function Home() {
             <img src={logo} alt="Vyraaz Firetech" className="h-10 md:h-12 w-auto object-contain" />
           </a>
           <nav className="hidden md:flex gap-8 text-sm font-medium">
-            {["Home", "About", "Products", "Projects", "Contact"].map((l) => (
-              <a key={l} href={`#${l.toLowerCase()}`} className="relative group text-foreground/80 hover:text-foreground transition">
-                {l}
+            {copy.nav.map((label, index) => (
+              <a key={navTargets[index]} href={`#${navTargets[index]}`} className="relative group text-foreground/80 hover:text-foreground transition">
+                {label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-fire group-hover:w-full transition-all" />
               </a>
             ))}
@@ -239,14 +239,14 @@ function Home() {
         {menuOpen && (
           <nav className="md:hidden border-t border-border bg-background/95 backdrop-blur-xl">
             <div className="px-6 py-4 flex flex-col gap-1">
-              {["Home", "About", "Products", "Projects", "Contact"].map((l) => (
+              {copy.nav.map((label, index) => (
                 <a
-                  key={l}
-                  href={`#${l.toLowerCase()}`}
+                  key={navTargets[index]}
+                  href={`#${navTargets[index]}`}
                   onClick={() => setMenuOpen(false)}
                   className="py-3 px-2 text-base font-medium text-foreground/80 hover:text-foreground hover:bg-muted rounded-md transition"
                 >
-                  {l}
+                  {label}
                 </a>
               ))}
               <a href="tel:+918103498409" className="sm:hidden mt-2">
@@ -299,13 +299,13 @@ function Home() {
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-4">
               <a href="#products">
                 <Button size="lg" className="bg-fire text-white h-14 px-8 text-base shadow-fire hover:opacity-90 group">
-                  Explore Products
+                  {copy.ctaExplore}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition" />
                 </Button>
               </a>
               <a href="#contact">
                 <Button size="lg" variant="outline" className="h-14 px-8 text-base border-border bg-background/40 backdrop-blur hover:bg-card">
-                  Request a Quote
+                  {copy.ctaQuote}
                 </Button>
               </a>
             </motion.div>
@@ -315,11 +315,11 @@ function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-fire opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-fire" />
               </span>
-              Indore's Trusted Fire Safety Partner
+              {copy.trustBadge}
             </motion.div>
 
             <motion.div variants={fadeUp} className="mt-14 grid grid-cols-3 max-w-md gap-6">
-              {[["10+", "Years"], ["100+", "Projects"], ["24/7", "Support"]].map(([n, l]) => (
+              {copy.stats.map(([n, l]) => (
                 <div key={l}>
                   <div className="font-display text-4xl md:text-5xl text-fire">{n}</div>
                   <div className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-2">{l}</div>
@@ -335,7 +335,7 @@ function Home() {
         <div className="flex marquee-track-fast gap-8 md:gap-16 whitespace-nowrap font-display text-xl md:text-5xl uppercase">
           {Array.from({ length: 4 }).map((_, i) => (
             <div key={i} className="flex gap-8 md:gap-16 items-center">
-              {["Fire Alarm System", "•", "Fire Fighting Pumps", "•", "Fire Hydrant System", "•", "Fire Extinguishers", "•", "Sprinkler Systems", "•"].map((t, j) => (
+              {[...copy.marquee.flatMap((item) => [item, "•"])].map((t, j) => (
                 <span key={j} className={t === "•" ? "text-brand" : "text-foreground/40 hover:text-foreground transition"}>{t}</span>
               ))}
             </div>
