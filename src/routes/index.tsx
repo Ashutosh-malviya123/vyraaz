@@ -215,39 +215,118 @@ function ClientReviews() {
   );
 }
 
-function ReviewMarquee({ items, className }: { items: typeof reviews; className: string }) {
+function ReviewMarquee({ items, reverse = false }: { items: typeof reviews; reverse?: boolean }) {
+  const scrollerRef = useRef<HTMLDivElement | null>(null);
+  const pausedRef = useRef(false);
+
+  // Seamless infinite auto-scroll: triple the list, jump back to middle when crossing a third.
+  const tripled = [...items, ...items, ...items];
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    // Start at the middle copy so we can scroll either direction infinitely.
+    const setStart = () => {
+      el.scrollLeft = el.scrollWidth / 3;
+    };
+    setStart();
+    const onResize = () => setStart();
+    window.addEventListener("resize", onResize);
+
+    let raf = 0;
+    let last = performance.now();
+    const speed = 30; // px/sec
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!pausedRef.current && el) {
+        el.scrollLeft += (reverse ? -1 : 1) * speed * dt;
+        const third = el.scrollWidth / 3;
+        if (el.scrollLeft >= third * 2) el.scrollLeft -= third;
+        else if (el.scrollLeft <= 0) el.scrollLeft += third;
+      }
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [reverse, items.length]);
+
+  const step = (dir: -1 | 1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const card = el.querySelector("article");
+    const cardWidth = card ? (card as HTMLElement).offsetWidth + 16 : 220;
+    el.scrollBy({ left: dir * cardWidth, behavior: "smooth" });
+  };
+
   return (
-    <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
-      <div className={`flex w-max gap-4 md:gap-6 ${className}`}>
-        {[...items, ...items, ...items].map((r, i) => (
-          <article
-            key={`${r.name}-${i}`}
-            className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-border bg-background p-5 md:p-6 shadow-sm flex flex-col gap-3"
-          >
-            <div className="flex items-center gap-1 text-fire">
-              {Array.from({ length: 5 }).map((_, k) => (
-                <svg key={k} width="14" height="14" viewBox="0 0 24 24" fill={k < r.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
-                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              ))}
-            </div>
-            <p className="text-sm md:text-[0.95rem] text-foreground/90 leading-relaxed line-clamp-5">
-              "{r.text}"
-            </p>
-            <div className="mt-auto pt-3 border-t border-border/60">
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full bg-fire/15 text-fire grid place-items-center font-semibold text-sm">
-                  {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
-                </div>
-                <div className="min-w-0">
-                  <div className="text-sm font-semibold truncate">{r.name}</div>
-                  <div className="text-xs text-muted-foreground truncate">{r.role}</div>
+    <div
+      className="relative group"
+      onMouseEnter={() => (pausedRef.current = true)}
+      onMouseLeave={() => (pausedRef.current = false)}
+      onTouchStart={() => (pausedRef.current = true)}
+      onTouchEnd={() => {
+        // resume after a short delay so user momentum scroll isn't fought
+        setTimeout(() => (pausedRef.current = false), 1500);
+      }}
+    >
+      <div
+        ref={scrollerRef}
+        className="overflow-x-auto no-scrollbar [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]"
+        style={{ scrollbarWidth: "none" }}
+      >
+        <div className="flex w-max gap-4 md:gap-6">
+          {tripled.map((r, i) => (
+            <article
+              key={`${r.name}-${i}`}
+              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-border bg-background p-5 md:p-6 shadow-sm flex flex-col gap-3"
+            >
+              <div className="flex items-center gap-1 text-fire">
+                {Array.from({ length: 5 }).map((_, k) => (
+                  <svg key={k} width="14" height="14" viewBox="0 0 24 24" fill={k < r.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                ))}
+              </div>
+              <p className="text-sm md:text-[0.95rem] text-foreground/90 leading-relaxed line-clamp-5">
+                "{r.text}"
+              </p>
+              <div className="mt-auto pt-3 border-t border-border/60">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-fire/15 text-fire grid place-items-center font-semibold text-sm">
+                    {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-sm font-semibold truncate">{r.name}</div>
+                    <div className="text-xs text-muted-foreground truncate">{r.role}</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
+
+      {/* Controls */}
+      <button
+        type="button"
+        aria-label="Previous reviews"
+        onClick={() => step(-1)}
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full bg-background/90 backdrop-blur border border-border shadow-md grid place-items-center hover:bg-fire hover:text-white hover:border-fire transition"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next reviews"
+        onClick={() => step(1)}
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 md:w-11 md:h-11 rounded-full bg-background/90 backdrop-blur border border-border shadow-md grid place-items-center hover:bg-fire hover:text-white hover:border-fire transition"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
     </div>
   );
 }
