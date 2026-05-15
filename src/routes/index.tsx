@@ -8,6 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 
 import logo from "@/assets/vyraaz-logo.png";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 import hydrantImg from "@/assets/product-hydrant.jpg";
 import extImg from "@/assets/product-extinguisher.jpg";
 import alarmImg from "@/assets/product-alarm.jpg";
@@ -127,6 +128,7 @@ function Home() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
+            <LanguageSwitcher />
             <a href="tel:+918103498409" className="hidden sm:block">
               <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
                 <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
