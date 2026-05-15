@@ -192,6 +192,66 @@ function FireDivider() {
   );
 }
 
+function ClientReviews() {
+  const row1 = reviews.slice(0, 5);
+  const row2 = reviews.slice(5);
+  return (
+    <section id="reviews" className="relative py-24 md:py-32 bg-card/30 border-y border-border overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-12 md:mb-16 text-center">
+        <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Voices of Trust</div>
+        <h2 className="font-display text-3xl md:text-5xl uppercase">
+          What Our <span className="text-fire">Clients Say</span>
+        </h2>
+        <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+          Real stories from facilities, hotels, hospitals and industries we protect across Madhya Pradesh.
+        </p>
+      </div>
+
+      <div className="space-y-5 md:space-y-6">
+        <ReviewMarquee items={row1} className="marquee-track-slow" />
+        <ReviewMarquee items={row2} className="marquee-track-reverse" />
+      </div>
+    </section>
+  );
+}
+
+function ReviewMarquee({ items, className }: { items: typeof reviews; className: string }) {
+  return (
+    <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]">
+      <div className={`flex w-max gap-4 md:gap-6 ${className}`}>
+        {[...items, ...items, ...items].map((r, i) => (
+          <article
+            key={`${r.name}-${i}`}
+            className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-border bg-background p-5 md:p-6 shadow-sm flex flex-col gap-3"
+          >
+            <div className="flex items-center gap-1 text-fire">
+              {Array.from({ length: 5 }).map((_, k) => (
+                <svg key={k} width="14" height="14" viewBox="0 0 24 24" fill={k < r.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
+              ))}
+            </div>
+            <p className="text-sm md:text-[0.95rem] text-foreground/90 leading-relaxed line-clamp-5">
+              "{r.text}"
+            </p>
+            <div className="mt-auto pt-3 border-t border-border/60">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 rounded-full bg-fire/15 text-fire grid place-items-center font-semibold text-sm">
+                  {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-sm font-semibold truncate">{r.name}</div>
+                  <div className="text-xs text-muted-foreground truncate">{r.role}</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
