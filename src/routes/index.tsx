@@ -373,9 +373,9 @@ function Home() {
           </nav>
           <div className="flex items-center gap-2">
             <LanguageSwitcher />
-            <a href="tel:+918103498409" className="hidden sm:block">
+            <a href="tel:+918103497409" className="hidden sm:block">
               <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
-                <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+                <PhoneCall className="w-4 h-4 mr-2" /> 8103 497 409
               </Button>
             </a>
             <button
@@ -400,9 +400,9 @@ function Home() {
                   {label}
                 </a>
               ))}
-              <a href="tel:+918103498409" className="sm:hidden mt-2">
+              <a href="tel:+918103497409" className="sm:hidden mt-2">
                 <Button className="w-full bg-fire text-white shadow-glow">
-                  <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+                  <PhoneCall className="w-4 h-4 mr-2" /> 8103 497 409
                 </Button>
               </a>
             </div>
@@ -825,7 +825,7 @@ function Home() {
             </p>
             <div className="space-y-6">
               {[
-                { icon: PhoneCall, label: "Call Us", value: "+91 8103 498 409", href: "tel:+918103498409" },
+                { icon: PhoneCall, label: "Call Us", value: "+91 8103 497 409", href: "tel:+918103497409" },
                 { icon: Mail, label: "Email Us", value: "vyraazfiretech@gmail.com", href: "mailto:vyraazfiretech@gmail.com" },
                 { icon: MapPin, label: "Visit Us", value: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa, Indore, MP 452001" },
               ].map((c) => (
@@ -867,7 +867,7 @@ function Home() {
                 `*Phone:* ${encodeURIComponent(phone)}%0A` +
                 `*Email:* ${encodeURIComponent(email)}%0A` +
                 `*Requirement:* ${encodeURIComponent(message)}`;
-              window.open(`https://wa.me/918103498409?text=${text}`, "_blank");
+              window.open(`https://wa.me/918103497409?text=${text}`, "_blank");
               f.reset();
             }}
             className="bg-card/70 backdrop-blur-xl border border-border rounded-3xl p-8 md:p-10 space-y-5 shadow-2xl"
@@ -965,7 +965,7 @@ function Home() {
               Vyraaz Firetech is an Indore-based fire safety company providing sales, installation, refilling and AMC of fire protection systems across Madhya Pradesh.
             </p>
             <div className="flex gap-3 pt-2">
-              <a href="https://wa.me/918103498409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+              <a href="https://wa.me/918103497409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
                 <PhoneCall className="w-4 h-4" />
               </a>
               <a href="mailto:info@vyraazfiretech.com" aria-label="Email" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
@@ -1011,7 +1011,7 @@ function Home() {
               </li>
               <li className="flex gap-3">
                 <PhoneCall className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
-                <a href="tel:+918103498409" className="hover:text-foreground transition">+91 81034 98409</a>
+                <a href="tel:+918103497409" className="hover:text-foreground transition">+91 81034 97409</a>
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
