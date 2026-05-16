@@ -296,29 +296,34 @@ function ReviewMarquee({ items, reverse = false }: { items: typeof reviews; reve
           {tripled.map((r, i) => (
             <article
               key={`${r.name}-${i}`}
-              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-border bg-background p-5 md:p-6 shadow-sm flex flex-col gap-3"
+              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-[#e8eaed] bg-white p-4 md:p-5 shadow-sm flex flex-col gap-3 text-[#202124]"
             >
-              <div className="flex items-center gap-1 text-fire">
-                {Array.from({ length: 5 }).map((_, k) => (
-                  <svg key={k} width="14" height="14" viewBox="0 0 24 24" fill={k < r.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm md:text-[0.95rem] text-foreground/90 leading-relaxed line-clamp-5">
-                "{r.text}"
-              </p>
-              <div className="mt-auto pt-3 border-t border-border/60">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-fire/15 text-fire grid place-items-center font-semibold text-sm">
-                    {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold truncate">{r.name}</div>
-                    <div className="text-xs text-muted-foreground truncate">{r.role}</div>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div
+                  className="w-10 h-10 rounded-full grid place-items-center text-white font-medium text-sm shrink-0"
+                  style={{ background: AVATAR_COLORS[(r.name.charCodeAt(0) + r.name.length) % AVATAR_COLORS.length] }}
+                >
+                  {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase()}
                 </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[0.95rem] font-medium text-[#202124] truncate leading-tight">{r.name}</div>
+                  <div className="text-xs text-[#5f6368] truncate mt-0.5">{r.role}</div>
+                </div>
+                <GoogleG className="w-5 h-5 shrink-0 mt-0.5" />
               </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-0.5">
+                  {Array.from({ length: 5 }).map((_, k) => (
+                    <svg key={k} width="16" height="16" viewBox="0 0 24 24" fill={k < r.rating ? "#fbbc04" : "#e8eaed"}>
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-xs text-[#5f6368]">{r.when}</span>
+              </div>
+              <p className="text-sm text-[#3c4043] leading-relaxed line-clamp-5">
+                {r.text}
+              </p>
             </article>
           ))}
         </div>
