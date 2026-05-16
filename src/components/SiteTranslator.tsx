@@ -11,9 +11,9 @@ const SKIP_TEXT = new Set([
   "Vyraaz",
   "Firetech",
   "Vyraaz Firetech",
-  "8103 498 409",
-  "+91 81034 98409",
-  "+91 8103 498 409",
+  "8103 497 409",
+  "+91 81034 97409",
+  "+91 8103 497 409",
   "vyraazfiretech@gmail.com",
   "info@vyraazfiretech.com",
 ]);
