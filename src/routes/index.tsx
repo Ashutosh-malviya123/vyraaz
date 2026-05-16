@@ -826,7 +826,7 @@ function Home() {
             <div className="space-y-6">
               {[
                 { icon: PhoneCall, label: "Call Us", value: "+91 8103 497 409", href: "tel:+918103497409" },
-                { icon: Mail, label: "Email Us", value: "vyraazfiretech@gmail.com", href: "mailto:vyraazfiretech@gmail.com" },
+                { icon: Mail, label: "Email Us", value: "info@vyraazfiretech.com", href: "mailto:info@vyraazfiretech.com" },
                 { icon: MapPin, label: "Visit Us", value: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa, Indore, MP 452001" },
               ].map((c) => (
                 <a key={c.label} href={c.href} className="flex items-start gap-5 group">

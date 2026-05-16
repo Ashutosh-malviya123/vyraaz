@@ -14,7 +14,7 @@ const SKIP_TEXT = new Set([
   "8103 497 409",
   "+91 81034 97409",
   "+91 8103 497 409",
-  "vyraazfiretech@gmail.com",
+  "info@vyraazfiretech.com",
   "info@vyraazfiretech.com",
 ]);
 
