@@ -56,7 +56,7 @@ function PrivacyPage() {
 
           <section>
             <h2 className="font-display text-2xl uppercase mb-3 text-foreground">7. Contact Us</h2>
-            <p>For any privacy-related questions, contact Vyraaz Firetech, Indore, Madhya Pradesh — Phone: +91 81034 98409 — Email: info@vyraazfiretech.com.</p>
+            <p>For any privacy-related questions, contact Vyraaz Firetech, Indore, Madhya Pradesh — Phone: +91 81034 97409 — Email: info@vyraazfiretech.com.</p>
           </section>
         </div>
       </div>

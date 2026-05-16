@@ -129,9 +129,9 @@ function FireHydrantPage() {
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <a href="tel:+918103498409" className="hidden sm:block">
+            <a href="tel:+918103497409" className="hidden sm:block">
               <Button className="bg-fire text-white hover:opacity-90 shadow-glow">
-                <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+                <PhoneCall className="w-4 h-4 mr-2" /> 8103 497 409
               </Button>
             </a>
             <button
@@ -156,9 +156,9 @@ function FireHydrantPage() {
                   {l.label}
                 </a>
               ))}
-              <a href="tel:+918103498409" className="sm:hidden mt-2">
+              <a href="tel:+918103497409" className="sm:hidden mt-2">
                 <Button className="w-full bg-fire text-white shadow-glow">
-                  <PhoneCall className="w-4 h-4 mr-2" /> 8103 498 409
+                  <PhoneCall className="w-4 h-4 mr-2" /> 8103 497 409
                 </Button>
               </a>
             </div>

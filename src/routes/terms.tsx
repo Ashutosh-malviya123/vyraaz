@@ -65,7 +65,7 @@ function TermsPage() {
 
           <section>
             <h2 className="font-display text-2xl uppercase mb-3 text-foreground">9. Contact</h2>
-            <p>For questions about these terms, contact us at info@vyraazfiretech.com or +91 81034 98409.</p>
+            <p>For questions about these terms, contact us at info@vyraazfiretech.com or +91 81034 97409.</p>
           </section>
         </div>
       </div>

@@ -135,7 +135,7 @@ function FloatingContact() {
         <span className="absolute inset-0 rounded-full bg-fire opacity-60 animate-ping" />
         <span className="absolute inset-0 rounded-full bg-fire opacity-30 animate-pulse" />
         <a
-          href="tel:+918103498409"
+          href="tel:+918103497409"
           aria-label="Call us"
           className="relative w-14 h-14 rounded-full bg-fire text-white grid place-items-center shadow-xl hover:scale-110 active:scale-95 transition animate-wiggle"
           style={{ boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }}
@@ -147,7 +147,7 @@ function FloatingContact() {
         <span className="absolute inset-0 rounded-full opacity-60 animate-ping" style={{ background: "#25D366" }} />
         <span className="absolute inset-0 rounded-full opacity-30 animate-pulse" style={{ background: "#25D366" }} />
         <a
-          href="https://wa.me/918103498409"
+          href="https://wa.me/918103497409"
           target="_blank"
           rel="noreferrer"
           aria-label="WhatsApp"
