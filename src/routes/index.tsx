@@ -69,13 +69,63 @@ export const Route = createFileRoute("/")({
 });
 
 const features = [
-  { icon: Flame, label: "Fire Extinguisher Service" },
-  { icon: Droplets, label: "Fire Hydrant & Sprinkler Service" },
-  { icon: Bell, label: "Fire Alarm System" },
-  { icon: Wrench, label: "AMC of Fire System" },
-  { icon: Users, label: "Demonstration Service" },
-  { icon: Siren, label: "Extinguisher Supply & Refilling" },
+  { icon: ExtinguisherSolid, label: "Fire Extinguisher Service" },
+  { icon: HydrantSolid, label: "Fire Hydrant & Sprinkler Service" },
+  { icon: AlarmBellSolid, label: "Fire Alarm System" },
+  { icon: WrenchSolid, label: "AMC of Fire System" },
+  { icon: PeopleSolid, label: "Demonstration Service" },
+  { icon: RefillSolid, label: "Extinguisher Supply & Refilling" },
 ];
+
+type IconProps = { className?: string };
+
+function ExtinguisherSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M328 24c-13 0-24 11-24 24v8h-24c-13 0-24 11-24 24 0 9 5 17 13 21l-30 14c-7-3-14-5-22-5h-25c-15 0-29 7-37 19l-78 110c-6 9-4 21 5 27s21 4 27-5l63-89v300c0 13 11 24 24 24h160c13 0 24-11 24-24V336h24c13 0 24-11 24-24V160c0-44-36-80-80-80h-8V48c0-13-11-24-24-24zM168 408h160v48H168v-48z"/>
+    </svg>
+  );
+}
+
+function HydrantSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M256 16c-18 0-32 14-32 32v16h-24c-13 0-24 11-24 24v8h-32c-13 0-24 11-24 24s11 24 24 24h32v32h-24c-13 0-24 11-24 24v144h288V200c0-13-11-24-24-24h-24v-32h32c13 0 24-11 24-24s-11-24-24-24h-32v-8c0-13-11-24-24-24h-24V48c0-18-14-32-32-32zM112 376c-13 0-24 11-24 24s11 24 24 24h288c13 0 24-11 24-24s-11-24-24-24H112zM160 440v32c0 13 11 24 24 24h144c13 0 24-11 24-24v-32H160z"/>
+    </svg>
+  );
+}
+
+function AlarmBellSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M256 32c-18 0-32 14-32 32v18c-73 15-128 80-128 158v60l-32 48c-5 7-5 17-1 25s12 13 21 13h344c9 0 17-5 21-13s4-18-1-25l-32-48v-60c0-78-55-143-128-158V64c0-18-14-32-32-32zM208 432c0 27 21 48 48 48s48-21 48-48H208z"/>
+    </svg>
+  );
+}
+
+function WrenchSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M464 80a112 112 0 0 0-152-105l67 67a32 32 0 0 1 0 45l-34 34a32 32 0 0 1-45 0l-67-67A112 112 0 0 0 168 312L43 437a48 48 0 0 0 68 68l125-125a112 112 0 0 0 228-100z"/>
+    </svg>
+  );
+}
+
+function PeopleSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 640 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M96 224a64 64 0 1 1 0-128 64 64 0 0 1 0 128zm480 0a64 64 0 1 1 0-128 64 64 0 0 1 0 128zM320 224a80 80 0 1 1 0-160 80 80 0 0 1 0 160zM0 432c0-44 36-80 80-80h32c12 0 23 3 33 8a144 144 0 0 0-17 64v40H16a16 16 0 0 1-16-16v-16zm528 32v-40a144 144 0 0 0-17-64c10-5 21-8 33-8h32c44 0 80 36 80 80v16a16 16 0 0 1-16 16H528zm-368-40a112 112 0 0 1 224 0v40a16 16 0 0 1-16 16H176a16 16 0 0 1-16-16v-40z"/>
+    </svg>
+  );
+}
+
+function RefillSolid({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M328 24c-13 0-24 11-24 24v8h-24c-13 0-24 11-24 24 0 9 5 17 13 21l-30 14c-7-3-14-5-22-5h-25c-15 0-29 7-37 19l-78 110c-6 9-4 21 5 27s21 4 27-5l63-89v300c0 13 11 24 24 24h160c13 0 24-11 24-24V336h24c13 0 24-11 24-24V160c0-44-36-80-80-80h-8V48c0-13-11-24-24-24zM248 200a8 8 0 0 1 8-8h8v-24a8 8 0 0 1 16 0v24h8a8 8 0 0 1 0 16h-8v24a8 8 0 0 1-16 0v-24h-8a8 8 0 0 1-8-8zM168 408h160v48H168v-48z"/>
+    </svg>
+  );
+}
 
 const products = [
   { img: hydrantImg, title: "Fire Hydrant", desc: "A complete range of fire fighting equipment — hydrants, hoses, nozzles & landing valves — engineered to combat fires effectively and efficiently." },
@@ -597,12 +647,7 @@ function Home() {
                       : "bg-fire text-white shadow-fire"
                   }`}
                 >
-                  <f.icon
-                    className="w-5 h-5 md:w-7 md:h-7"
-                    {...(i % 2 === 0
-                      ? { fill: "#ffffff", stroke: "#000000", strokeWidth: 1.75 }
-                      : {})}
-                  />
+                  <f.icon className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
                 <div className="relative font-display text-sm md:text-xl uppercase tracking-wider leading-tight">{f.label}</div>
                 <div className={`relative mt-1 md:mt-2 h-0.5 w-0 group-hover:w-8 transition-all duration-500 ${i % 2 === 0 ? "bg-white" : "bg-fire"}`} />
