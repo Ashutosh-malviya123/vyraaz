@@ -32,16 +32,31 @@ import clientHp from "@/assets/clients/hp.png";
 import clientNexa from "@/assets/clients/nexa.png";
 
 const reviews = [
-  { name: "Mustufa Khan", role: "Google Review", rating: 5, text: "Best refilling service in Indore." },
-  { name: "Hemendra Mehta", role: "Google Review", rating: 5, text: "Good service 👍" },
-  { name: "Mohommad Arif", role: "Google Review", rating: 5, text: "Material is so good 👍" },
-  { name: "Aagam Singhai", role: "Google Review", rating: 5, text: "Best fire extinguisher in Indore and service." },
-  { name: "Raghvendra Thakur", role: "Google Review", rating: 5, text: "Knowledgeable staff, efficient installation, and proactive maintenance that makes customers feel secure." },
-  { name: "Race Fire", role: "Google Review", rating: 5, text: "Vyraaz Fire Tech is also part of Race Fire Services — we are partners and assure you that Vyraaz delivers the best quality products as per standards and client requirements." },
-  { name: "Silent Creation", role: "Google Review", rating: 5, text: "Best product in fire equipment." },
-  { name: "Ayush Hardaha", role: "Google Review", rating: 5, text: "Best product, fire fitting." },
-  { name: "Sumit Nagwanshi", role: "Google Review", rating: 5, text: "Best fire service." },
+  { name: "Mustufa Khan", role: "Local Guide · 12 reviews", when: "a month ago", rating: 5, text: "Best refilling service in Indore." },
+  { name: "Hemendra Mehta", role: "3 reviews", when: "2 months ago", rating: 5, text: "Good service 👍" },
+  { name: "Mohommad Arif", role: "1 review", when: "3 weeks ago", rating: 5, text: "Material is so good 👍" },
+  { name: "Aagam Singhai", role: "Local Guide · 24 reviews", when: "2 weeks ago", rating: 5, text: "Best fire extinguisher in Indore and service." },
+  { name: "Raghvendra Thakur", role: "8 reviews", when: "a month ago", rating: 5, text: "Knowledgeable staff, efficient installation, and proactive maintenance that makes customers feel secure." },
+  { name: "Race Fire", role: "Local Guide · 41 reviews", when: "2 months ago", rating: 5, text: "Vyraaz Fire Tech is also part of Race Fire Services — we are partners and assure you that Vyraaz delivers the best quality products as per standards and client requirements." },
+  { name: "Silent Creation", role: "2 reviews", when: "a week ago", rating: 5, text: "Best product in fire equipment." },
+  { name: "Ayush Hardaha", role: "5 reviews", when: "3 months ago", rating: 5, text: "Best product, fire fitting." },
+  { name: "Sumit Nagwanshi", role: "1 review", when: "a week ago", rating: 5, text: "Best fire service." },
 ];
+
+const AVATAR_COLORS = [
+  "#1a73e8", "#d93025", "#188038", "#e37400", "#9334e6", "#129eaf", "#c5221f", "#1967d2",
+];
+
+function GoogleG({ className = "w-5 h-5" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} aria-hidden="true">
+      <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+      <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+      <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+      <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+    </svg>
+  );
+}
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -281,29 +296,34 @@ function ReviewMarquee({ items, reverse = false }: { items: typeof reviews; reve
           {tripled.map((r, i) => (
             <article
               key={`${r.name}-${i}`}
-              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-border bg-background p-5 md:p-6 shadow-sm flex flex-col gap-3"
+              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[22rem] rounded-2xl border border-[#e8eaed] bg-white p-4 md:p-5 shadow-sm flex flex-col gap-3 text-[#202124]"
             >
-              <div className="flex items-center gap-1 text-fire">
-                {Array.from({ length: 5 }).map((_, k) => (
-                  <svg key={k} width="14" height="14" viewBox="0 0 24 24" fill={k < r.rating ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.5">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ))}
-              </div>
-              <p className="text-sm md:text-[0.95rem] text-foreground/90 leading-relaxed line-clamp-5">
-                "{r.text}"
-              </p>
-              <div className="mt-auto pt-3 border-t border-border/60">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-fire/15 text-fire grid place-items-center font-semibold text-sm">
-                    {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("")}
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-sm font-semibold truncate">{r.name}</div>
-                    <div className="text-xs text-muted-foreground truncate">{r.role}</div>
-                  </div>
+              <div className="flex items-start gap-3">
+                <div
+                  className="w-10 h-10 rounded-full grid place-items-center text-white font-medium text-sm shrink-0"
+                  style={{ background: AVATAR_COLORS[(r.name.charCodeAt(0) + r.name.length) % AVATAR_COLORS.length] }}
+                >
+                  {r.name.split(" ").map((p) => p[0]).slice(0, 2).join("").toUpperCase()}
                 </div>
+                <div className="min-w-0 flex-1">
+                  <div className="text-[0.95rem] font-medium text-[#202124] truncate leading-tight">{r.name}</div>
+                  <div className="text-xs text-[#5f6368] truncate mt-0.5">{r.role}</div>
+                </div>
+                <GoogleG className="w-5 h-5 shrink-0 mt-0.5" />
               </div>
+              <div className="flex items-center gap-2">
+                <div className="flex items-center gap-0.5">
+                  {Array.from({ length: 5 }).map((_, k) => (
+                    <svg key={k} width="16" height="16" viewBox="0 0 24 24" fill={k < r.rating ? "#fbbc04" : "#e8eaed"}>
+                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    </svg>
+                  ))}
+                </div>
+                <span className="text-xs text-[#5f6368]">{r.when}</span>
+              </div>
+              <p className="text-sm text-[#3c4043] leading-relaxed line-clamp-5">
+                {r.text}
+              </p>
             </article>
           ))}
         </div>
