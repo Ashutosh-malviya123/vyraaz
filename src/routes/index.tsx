@@ -37,7 +37,6 @@ const reviews = [
   { name: "Mohommad Arif", role: "1 review", when: "3 weeks ago", rating: 5, text: "Material is so good 👍" },
   { name: "Aagam Singhai", role: "Local Guide · 24 reviews", when: "2 weeks ago", rating: 5, text: "Best fire extinguisher in Indore and service." },
   { name: "Raghvendra Thakur", role: "8 reviews", when: "a month ago", rating: 5, text: "Knowledgeable staff, efficient installation, and proactive maintenance that makes customers feel secure." },
-  { name: "Race Fire", role: "Local Guide · 41 reviews", when: "2 months ago", rating: 5, text: "Vyraaz Fire Tech is also part of Race Fire Services — we are partners and assure you that Vyraaz delivers the best quality products as per standards and client requirements." },
   { name: "Silent Creation", role: "2 reviews", when: "a week ago", rating: 5, text: "Best product in fire equipment." },
   { name: "Ayush Hardaha", role: "5 reviews", when: "3 months ago", rating: 5, text: "Best product, fire fitting." },
   { name: "Sumit Nagwanshi", role: "1 review", when: "a week ago", rating: 5, text: "Best fire service." },
