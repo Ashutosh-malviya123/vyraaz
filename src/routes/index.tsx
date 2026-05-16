@@ -1055,7 +1055,7 @@ function ClientsCarousel() {
           {[...clients, ...clients, ...clients, ...clients].map((c, i) => (
             <div
               key={`${c.name}-${i}`}
-              className="shrink-0 w-[calc((100vw-3rem-2rem)/3)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
+              className="shrink-0 w-[calc((100vw-3rem-1rem)/2)] md:w-[calc((min(80rem,100vw)-3rem-3rem)/3)] aspect-[4/3] rounded-2xl border border-border bg-white grid place-items-center p-6 md:p-10"
             >
               <img
                 src={c.src}
