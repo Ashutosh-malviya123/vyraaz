@@ -32,16 +32,15 @@ import clientHp from "@/assets/clients/hp.png";
 import clientNexa from "@/assets/clients/nexa.png";
 
 const reviews = [
-  { name: "Rohit Sharma", role: "Facility Manager, Indore", rating: 5, text: "Vyraaz installed our entire hydrant and alarm system on time. Very professional team and great after-sales support." },
-  { name: "Priya Verma", role: "Operations Lead, Bhopal", rating: 5, text: "Quick refilling service and honest pricing. Their AMC plan keeps our office completely worry-free." },
-  { name: "Anand Patel", role: "Plant Head, Pithampur", rating: 5, text: "Highly skilled engineers. They demonstrated every extinguisher to our staff. Truly a safety-first company." },
-  { name: "Kavita Joshi", role: "School Principal, Indore", rating: 5, text: "Trained our staff and students with a live demo. Equipment is top quality and certified." },
-  { name: "Sandeep Mehra", role: "Hotel Owner, Ujjain", rating: 5, text: "Smooth installation across 4 floors. Documentation for fire NOC was handled end-to-end. Recommended!" },
-  { name: "Neha Gupta", role: "Hospital Admin, Indore", rating: 5, text: "Reliable AMC, prompt response and genuine spares. Vyraaz is now our default fire safety partner." },
-  { name: "Vikram Singh", role: "Builder, Dewas", rating: 5, text: "Best pricing in MP for fire pumps and sprinklers. Delivered ahead of schedule." },
-  { name: "Aarti Nair", role: "Restaurant Owner, Indore", rating: 4, text: "Friendly team, fast quotation, and the kitchen extinguisher setup is perfect. Will hire again." },
-  { name: "Manish Tiwari", role: "Warehouse Manager, Mhow", rating: 5, text: "Saved us during an audit — their team mobilised within hours. Quality work and clean cabling." },
-  { name: "Sneha Iyer", role: "HR, IT Park Indore", rating: 5, text: "Professional drills, clear training material and certified extinguishers. Our team feels much safer." },
+  { name: "Mustufa Khan", role: "Google Review", rating: 5, text: "Best refilling service in Indore." },
+  { name: "Hemendra Mehta", role: "Google Review", rating: 5, text: "Good service 👍" },
+  { name: "Mohommad Arif", role: "Google Review", rating: 5, text: "Material is so good 👍" },
+  { name: "Aagam Singhai", role: "Google Review", rating: 5, text: "Best fire extinguisher in Indore and service." },
+  { name: "Raghvendra Thakur", role: "Google Review", rating: 5, text: "Knowledgeable staff, efficient installation, and proactive maintenance that makes customers feel secure." },
+  { name: "Race Fire", role: "Google Review", rating: 5, text: "Vyraaz Fire Tech is also part of Race Fire Services — we are partners and assure you that Vyraaz delivers the best quality products as per standards and client requirements." },
+  { name: "Silent Creation", role: "Google Review", rating: 5, text: "Best product in fire equipment." },
+  { name: "Ayush Hardaha", role: "Google Review", rating: 5, text: "Best product, fire fitting." },
+  { name: "Sumit Nagwanshi", role: "Google Review", rating: 5, text: "Best fire service." },
 ];
 
 export const Route = createFileRoute("/")({
