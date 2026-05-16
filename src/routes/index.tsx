@@ -826,7 +826,7 @@ function Home() {
             <div className="space-y-6">
               {[
                 { icon: PhoneCall, label: "Call Us", value: "+91 8103 497 409", href: "tel:+918103497409" },
-                { icon: Mail, label: "Email Us", value: "info@vyraazfiretech.com", href: "mailto:info@vyraazfiretech.com" },
+                { icon: Mail, label: "Email Us", value: "vyraazfiretech@gmail.com", href: "mailto:vyraazfiretech@gmail.com" },
                 { icon: MapPin, label: "Visit Us", value: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa, Indore, MP 452001" },
               ].map((c) => (
                 <a key={c.label} href={c.href} className="flex items-start gap-5 group">
@@ -968,7 +968,7 @@ function Home() {
               <a href="https://wa.me/918103497409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
                 <PhoneCall className="w-4 h-4" />
               </a>
-              <a href="mailto:info@vyraazfiretech.com" aria-label="Email" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
+              <a href="mailto:vyraazfiretech@gmail.com" aria-label="Email" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
                 <Mail className="w-4 h-4" />
               </a>
               <a href="https://maps.google.com/?q=Vyraaz+FireTech+Indore" target="_blank" rel="noreferrer" aria-label="Location" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
@@ -1015,7 +1015,7 @@ function Home() {
               </li>
               <li className="flex gap-3">
                 <Mail className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
-                <a href="mailto:info@vyraazfiretech.com" className="hover:text-foreground transition break-all">info@vyraazfiretech.com</a>
+                <a href="mailto:vyraazfiretech@gmail.com" className="hover:text-foreground transition break-all">vyraazfiretech@gmail.com</a>
               </li>
               <li className="flex gap-3">
                 <Clock className="w-4 h-4 mt-0.5 shrink-0 text-fire" />
