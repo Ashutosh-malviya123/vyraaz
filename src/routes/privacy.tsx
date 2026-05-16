@@ -51,12 +51,12 @@ function PrivacyPage() {
 
           <section>
             <h2 className="font-display text-2xl uppercase mb-3 text-foreground">6. Your Rights</h2>
-            <p>You may request access, correction, or deletion of your personal information at any time by writing to us at info@vyraazfiretech.com.</p>
+            <p>You may request access, correction, or deletion of your personal information at any time by writing to us at vyraazfiretech@gmail.com.</p>
           </section>
 
           <section>
             <h2 className="font-display text-2xl uppercase mb-3 text-foreground">7. Contact Us</h2>
-            <p>For any privacy-related questions, contact Vyraaz Firetech, Indore, Madhya Pradesh — Phone: +91 81034 97409 — Email: info@vyraazfiretech.com.</p>
+            <p>For any privacy-related questions, contact Vyraaz Firetech, Indore, Madhya Pradesh — Phone: +91 81034 97409 — Email: vyraazfiretech@gmail.com.</p>
           </section>
         </div>
       </div>

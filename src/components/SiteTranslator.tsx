@@ -14,8 +14,7 @@ const SKIP_TEXT = new Set([
   "8103 497 409",
   "+91 81034 97409",
   "+91 8103 497 409",
-  "info@vyraazfiretech.com",
-  "info@vyraazfiretech.com",
+  "vyraazfiretech@gmail.com",
 ]);
 
 const textOriginals = new WeakMap<Text, string>();
