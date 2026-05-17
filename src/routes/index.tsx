@@ -552,6 +552,18 @@ function Home() {
                 Firetech
               </span>
             </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-base md:text-lg font-semibold text-foreground/90"
+            >
+              Vyraaz FireTech – Fire Safety Services in Indore
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl"
+            >
+              Fire extinguisher refilling, fire alarm installation, hydrant systems and complete fire safety solutions across Indore &amp; Madhya Pradesh.
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -881,14 +893,17 @@ function Home() {
       <section className="relative py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz</div>
-            <h2 className="font-display text-5xl md:text-7xl uppercase">Safety You Can <span className="text-fire">Count On</span></h2>
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz FireTech in Indore</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase">Indore's Trusted <span className="text-fire">Fire Safety Partner</span></h2>
+            <p className="text-foreground/70 mt-4 text-sm md:text-base">
+              Local Indore team, certified equipment and rapid emergency response for fire extinguisher service, alarms, hydrant systems and AMC.
+            </p>
           </motion.div>
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {[
               { icon: Shield, t: "Certified Equipment", d: "ISI-marked, tested to Indian fire safety standards." },
-              { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure code-compliant setup." },
-              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Fast response across Indore, anytime." },
+              { icon: Wrench, t: "10+ Years Experience", d: "Professional fire safety service across Indore & MP." },
+              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Rapid response across Indore, anytime you need us." },
             ].map((f, i) => (
               <motion.div
                 key={f.t}
