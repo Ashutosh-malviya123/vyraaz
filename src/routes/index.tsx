@@ -674,7 +674,7 @@ function Home() {
 
       <FireDivider />
       {/* FEATURES */}
-      <section className="relative py-24 bg-linear-to-b from-background via-card/40 to-background border-y border-border overflow-hidden">
+      <section id="services" className="relative scroll-mt-24 py-24 bg-linear-to-b from-background via-card/40 to-background border-y border-border overflow-hidden">
         {/* Decorative blurs */}
         <div className="absolute -top-20 -left-20 w-72 h-72 rounded-full bg-fire opacity-20 blur-3xl pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-ember opacity-20 blur-3xl pointer-events-none" />
