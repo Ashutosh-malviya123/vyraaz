@@ -61,8 +61,63 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Vyraaz Firetech | Fire Protection Systems Indore" },
-      { name: "description", content: "Vyraaz Firetech Indore — fire hydrant, extinguisher, alarm, sprinkler and pump systems. Sales, installation, refilling and AMC." },
+      { title: "Vyraaz FireTech – Fire Extinguisher & Fire Safety Services in Indore" },
+      { name: "description", content: "Vyraaz FireTech provides fire extinguisher refilling, fire alarm installation, hydrant systems, AMC maintenance, and fire safety solutions in Indore." },
+      { name: "keywords", content: "fire extinguisher service in Indore, fire safety services in Indore, fire alarm installation in Indore, hydrant system installation in Indore, fire extinguisher refilling Indore, AMC fire system Indore" },
+      { property: "og:title", content: "Vyraaz FireTech – Fire Extinguisher & Fire Safety Services in Indore" },
+      { property: "og:description", content: "Fire extinguisher refilling, fire alarm installation, hydrant systems and AMC across Indore, Madhya Pradesh." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vyraaz.lovable.app/" },
+      { name: "geo.region", content: "IN-MP" },
+      { name: "geo.placename", content: "Indore" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://vyraaz.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://vyraaz.lovable.app/#localbusiness",
+          name: "Vyraaz FireTech – Fire Safety Services",
+          image: "https://vyraaz.lovable.app/hero-poster.jpg",
+          url: "https://vyraaz.lovable.app/",
+          telephone: "+91-8103497409",
+          priceRange: "₹₹",
+          description: "Fire extinguisher refilling, fire alarm installation, hydrant systems, AMC maintenance and fire safety solutions in Indore, Madhya Pradesh.",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa",
+            addressLocality: "Indore",
+            addressRegion: "Madhya Pradesh",
+            postalCode: "452001",
+            addressCountry: "IN",
+          },
+          areaServed: [
+            { "@type": "City", name: "Indore" },
+            { "@type": "State", name: "Madhya Pradesh" },
+          ],
+          openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            opens: "09:00",
+            closes: "20:00",
+          }],
+          sameAs: ["https://wa.me/918103497409"],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Fire Safety Services",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fire Extinguisher Service & Refilling in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fire Alarm Installation in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hydrant System Installation in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "AMC of Fire Safety Systems in Indore" } },
+            ],
+          },
+        }),
+      },
     ],
   }),
 });
@@ -497,6 +552,18 @@ function Home() {
                 Firetech
               </span>
             </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              className="mt-4 text-base md:text-lg font-semibold text-foreground/90"
+            >
+              Vyraaz FireTech – Fire Safety Services in Indore
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="mt-2 text-sm md:text-base text-muted-foreground max-w-2xl"
+            >
+              Fire extinguisher refilling, fire alarm installation, hydrant systems and complete fire safety solutions across Indore &amp; Madhya Pradesh.
+            </motion.p>
           </motion.div>
 
           <motion.div
@@ -826,14 +893,17 @@ function Home() {
       <section className="relative py-16 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="text-center max-w-2xl mx-auto mb-8 md:mb-16">
-            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz</div>
-            <h2 className="font-display text-5xl md:text-7xl uppercase">Safety You Can <span className="text-fire">Count On</span></h2>
+            <div className="text-xs uppercase tracking-[0.3em] text-ember mb-3">Why Choose Vyraaz FireTech in Indore</div>
+            <h2 className="font-display text-5xl md:text-7xl uppercase">Indore's Trusted <span className="text-fire">Fire Safety Partner</span></h2>
+            <p className="text-foreground/70 mt-4 text-sm md:text-base">
+              Local Indore team, certified equipment and rapid emergency response for fire extinguisher service, alarms, hydrant systems and AMC.
+            </p>
           </motion.div>
           <div className="grid grid-cols-3 gap-3 md:gap-6">
             {[
               { icon: Shield, t: "Certified Equipment", d: "ISI-marked, tested to Indian fire safety standards." },
-              { icon: Wrench, t: "Expert Installation", d: "Trained engineers ensure code-compliant setup." },
-              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Fast response across Indore, anytime." },
+              { icon: Wrench, t: "10+ Years Experience", d: "Professional fire safety service across Indore & MP." },
+              { icon: PhoneCall, t: "24/7 Emergency Support", d: "Rapid response across Indore, anytime you need us." },
             ].map((f, i) => (
               <motion.div
                 key={f.t}
@@ -1026,7 +1096,7 @@ function Home() {
               <img src={logo} alt="Vyraaz Firetech" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Vyraaz Firetech is an Indore-based fire safety company providing sales, installation, refilling and AMC of fire protection systems across Madhya Pradesh.
+              <strong>Vyraaz FireTech – Fire Safety Services</strong> is an Indore-based fire protection company providing fire extinguisher refilling, fire alarm installation, hydrant systems and AMC across Madhya Pradesh.
             </p>
             <div className="flex gap-3 pt-2">
               <a href="https://wa.me/918103497409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
