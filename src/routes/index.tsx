@@ -477,7 +477,7 @@ function Home() {
   }, []);
 
   const copy = homeLabels[language] ?? homeLabels.en;
-  const navTargets = ["top", "about", "products", "projects", "contact"] as const;
+  const navTargets = ["top", "about", "services", "products", "projects", "contact"] as const;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-hidden">
