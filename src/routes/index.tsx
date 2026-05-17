@@ -61,8 +61,63 @@ export const Route = createFileRoute("/")({
   component: Home,
   head: () => ({
     meta: [
-      { title: "Vyraaz Firetech | Fire Protection Systems Indore" },
-      { name: "description", content: "Vyraaz Firetech Indore — fire hydrant, extinguisher, alarm, sprinkler and pump systems. Sales, installation, refilling and AMC." },
+      { title: "Vyraaz FireTech – Fire Extinguisher & Fire Safety Services in Indore" },
+      { name: "description", content: "Vyraaz FireTech provides fire extinguisher refilling, fire alarm installation, hydrant systems, AMC maintenance, and fire safety solutions in Indore." },
+      { name: "keywords", content: "fire extinguisher service in Indore, fire safety services in Indore, fire alarm installation in Indore, hydrant system installation in Indore, fire extinguisher refilling Indore, AMC fire system Indore" },
+      { property: "og:title", content: "Vyraaz FireTech – Fire Extinguisher & Fire Safety Services in Indore" },
+      { property: "og:description", content: "Fire extinguisher refilling, fire alarm installation, hydrant systems and AMC across Indore, Madhya Pradesh." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vyraaz.lovable.app/" },
+      { name: "geo.region", content: "IN-MP" },
+      { name: "geo.placename", content: "Indore" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://vyraaz.lovable.app/" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          "@id": "https://vyraaz.lovable.app/#localbusiness",
+          name: "Vyraaz FireTech – Fire Safety Services",
+          image: "https://vyraaz.lovable.app/hero-poster.jpg",
+          url: "https://vyraaz.lovable.app/",
+          telephone: "+91-8103497409",
+          priceRange: "₹₹",
+          description: "Fire extinguisher refilling, fire alarm installation, hydrant systems, AMC maintenance and fire safety solutions in Indore, Madhya Pradesh.",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "46, Shop, Sch. No. 356, Mechanic Nagar Main Rd, near Tower Square, Bhanwar Kuwa",
+            addressLocality: "Indore",
+            addressRegion: "Madhya Pradesh",
+            postalCode: "452001",
+            addressCountry: "IN",
+          },
+          areaServed: [
+            { "@type": "City", name: "Indore" },
+            { "@type": "State", name: "Madhya Pradesh" },
+          ],
+          openingHoursSpecification: [{
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+            opens: "09:00",
+            closes: "20:00",
+          }],
+          sameAs: ["https://wa.me/918103497409"],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Fire Safety Services",
+            itemListElement: [
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fire Extinguisher Service & Refilling in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Fire Alarm Installation in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hydrant System Installation in Indore" } },
+              { "@type": "Offer", itemOffered: { "@type": "Service", name: "AMC of Fire Safety Systems in Indore" } },
+            ],
+          },
+        }),
+      },
     ],
   }),
 });
