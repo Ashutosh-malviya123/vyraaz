@@ -1096,7 +1096,7 @@ function Home() {
               <img src={logo} alt="Vyraaz Firetech" className="h-12 w-auto object-contain" />
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Vyraaz Firetech is an Indore-based fire safety company providing sales, installation, refilling and AMC of fire protection systems across Madhya Pradesh.
+              <strong>Vyraaz FireTech – Fire Safety Services</strong> is an Indore-based fire protection company providing fire extinguisher refilling, fire alarm installation, hydrant systems and AMC across Madhya Pradesh.
             </p>
             <div className="flex gap-3 pt-2">
               <a href="https://wa.me/918103497409" aria-label="WhatsApp" className="w-9 h-9 grid place-items-center rounded-md border border-border hover:bg-muted transition">
