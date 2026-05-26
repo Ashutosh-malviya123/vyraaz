@@ -554,6 +554,12 @@ function Home() {
             </motion.h1>
             <motion.p
               variants={fadeUp}
+              className="mt-3 text-lg md:text-xl font-bold text-fire tracking-wide"
+            >
+              Vyraaz — Built for the Nation's Needs.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
               className="mt-4 text-base md:text-lg font-semibold text-foreground/90"
             >
               Vyraaz FireTech – Fire Safety Services in Indore
